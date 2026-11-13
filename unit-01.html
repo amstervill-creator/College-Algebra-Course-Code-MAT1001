@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unit 1 — Number systems and operations | MAT1001</title>
+<meta name="description" content="Unit 1 of MAT1001 College Algebra: number systems, properties of operations, signed numbers, fractions, decimals and percentages.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="backlink" href="index.html">All units</a>
+    <p class="course-code">Unit 1</p>
+    <h1>Number systems and operations</h1>
+    <p class="school">Sessions 1&ndash;3 &nbsp;|&nbsp; 31 August &ndash; 11 September &nbsp;|&nbsp; Worksheet 3</p>
+  </div>
+</header>
+
+<main>
+
+  <section class="page-section">
+    <div class="wrap">
+
+      <p class="lead" style="font-size:var(--fs-lead); line-height:1.5; max-width:31rem;">Everything later in this course sits on top of this unit. Nothing here is new to you &mdash; you have counted, measured, split a bag and worked out a percentage for years. What is new is the names, and knowing exactly when each kind of number is needed.</p>
+
+      <!-- ===================== 1.1 ===================== -->
+      <div class="topic">
+        <h3>1.1&ensp;The kinds of number</h3>
+
+        <div class="situation">
+          <p class="ask">Four questions from one day on a farm.</p>
+          <p>How many goats are in the pen? The thermometer reads three below the mark &mdash; what temperature is that? Three-quarters of a bag went on the first field &mdash; how much is left? A square plot covers exactly one hectare &mdash; how long is one side?</p>
+          <p>Each answer is a number, but they are not all the same <em>kind</em> of number. That is what this section is about.</p>
+        </div>
+
+        <p>The sets fit inside one another, each one bigger than the last:</p>
+
+        <div class="worked">
+          <h4>The sets, from smallest outwards</h4>
+          <p class="step"><strong>Natural numbers</strong> &mdash; 1, 2, 3, &hellip; &nbsp; Counting. Goats, bags, rows.</p>
+          <p class="step"><strong>Whole numbers</strong> &mdash; the naturals plus 0. An empty store is zero, not nothing.</p>
+          <p class="step"><strong>Integers</strong> &mdash; the wholes plus the negatives. A temperature below the mark, a loss on a sale.</p>
+          <p class="step"><strong>Rational numbers</strong> &mdash; anything you can write as one integer over another. Three-quarters of a bag, 2.5&nbsp;kg per plot, 0.75 of a hectare.</p>
+          <p class="step"><strong>Irrational numbers</strong> &mdash; decimals that never end and never repeat. The side of a one-hectare square is 100&nbsp;m, but the <em>diagonal</em> across it is 141.42135&hellip;&nbsp;m, going on forever.</p>
+          <p class="step"><strong>Real numbers</strong> &mdash; all of the above together.</p>
+        </div>
+
+        <p class="because" style="color:var(--ink-soft); font-size:var(--fs-small); max-width:30rem;">Two things worth fixing in your mind now: a decimal that <em>recurs</em>, like 0.333&hellip;, is rational &mdash; it is 1/3. And not every square root is irrational: &radic;49 is just 7.</p>
+
+        <p style="margin-top:1.2rem;"><strong>Practice.</strong> Rational or irrational?</p>
+        <ol class="practice">
+          <li><p class="ask">0.75</p>
+            <details class="answer"><summary>Show the answer</summary>
+              <p class="reveal">Rational <span class="note">&mdash; it is 3/4.</span></p></details></li>
+          <li><p class="ask">&radic;49</p>
+            <details class="answer"><summary>Show the answer</summary>
+              <p class="reveal">Rational <span class="note">&mdash; it equals 7, a whole number.</span></p></details></li>
+          <li><p class="ask">&radic;7</p>
+            <details class="answer"><summary>Show the answer</summary>
+              <p class="reveal">Irrational <span class="note">&mdash; 2.6457&hellip;, never ends, never repeats.</span></p></details></li>
+          <li><p class="ask">0.333&hellip; (recurring)</p>
+            <details class="answer"><summary>Show the answer</summary>
+              <p class="reveal">Rational <span class="note">&mdash; it is 1/3.</span></p></details></li>
+        </ol>
+      </div>
+
+      <!-- ===================== 1.2 ===================== -->
+      <div class="topic">
+        <h3>1.2&ensp;How the operations behave</h3>
+
+        <div class="situation">
+          <p class="ask">Three fields, each needing $40 of fertiliser and $25 of seed.</p>
+          <p>You can cost it as three lots of $65, or as three lots of $40 plus three lots of $25. Both give $195. You have been relying on that for years; it has a name.</p>
+        </div>
+
+        <div class="worked">
+          <h4>The five properties</h4>
+          <p class="step"><strong>Commutative</strong> &mdash; order does not matter. 7 &times; $12 is the same as 12 &times; $7. <span class="because">True for adding and multiplying. Not for subtracting or dividing: $20 &minus; $8 is not $8 &minus; $20.</span></p>
+          <p class="step"><strong>Associative</strong> &mdash; grouping does not matter. Add a column of prices in any grouping and the total is the same.</p>
+          <p class="step"><strong>Distributive</strong> &mdash; 3($40 + $25) = 3 &times; $40 + 3 &times; $25. <span class="because">This is the one you will use most in this course. It is also how brackets get multiplied out.</span></p>
+          <p class="step"><strong>Identity</strong> &mdash; adding 0 or multiplying by 1 changes nothing.</p>
+          <p class="step"><strong>Inverse</strong> &mdash; every operation has something that undoes it. Owing $50 and paying $50. Doubling, then halving. <span class="because">This is exactly what you do when you solve an equation.</span></p>
+        </div>
+
+        <p><strong>Closure</strong> is a different idea. A set is <em>closed</em> under an operation if the answer always stays inside that set.</p>
+
+        <div class="worked">
+          <h4>Worked example</h4>
+          <p class="step">Are the natural numbers closed under subtraction?</p>
+          <p class="step">4 and 9 are both natural numbers.</p>
+          <p class="step">But 4 &minus; 9 = &minus;5, which is <em>not</em> a natural number.</p>
+          <p class="step"><strong>So no.</strong> <span class="because">One counter-example settles it. This is precisely why negative numbers had to be invented &mdash; to record a loss.</span></p>
+        </div>
+
+        <ol class="practice">
+          <li><p class="ask">3 + 7 = 7 + 3. Which property?</p>
+            <details class="answer"><summary>Show the answer</summary>
+              <p class="reveal">Commutative <span class="note">&mdash; the order changed, not the grouping.</span></p></details></li>
+          <li><p class="ask">5(2 + 4) = 5 &times; 2 + 5 &times; 4. Which property?</p>
+            <details class="answer"><summary>Show the answer</summary>
+              <p class="reveal">Distributive</p></details></li>
+          <li><p class="ask">Are the integers closed under division? Give a reason.</p>
+            <details class="answer"><summary>Show the answer</summary>
+              <p class="reveal">No. <span class="note">7 and 2 are both integers, but 7 &divide; 2 = 3.5, which is not.</span></p></details></li>
+        </ol>
+      </div>
+
+      <!-- ===================== 1.3 ===================== -->
+      <div class="topic">
+        <h3>1.3&ensp;Signed numbers and the order of operations</h3>
+
+        <div class="situation">
+          <p class="ask">You have $40 in the account and spend $65.</p>
+          <p>Nobody needs a rule to know where that leaves you. The rules below are only a way of writing down what you already do.</p>
+        </div>
+
+        <div class="worked">
+          <h4>The signs, built from a pattern</h4>
+          <p class="step">3 &times; (&minus;5) = &minus;15</p>
+          <p class="step">2 &times; (&minus;5) = &minus;10</p>
+          <p class="step">1 &times; (&minus;5) = &minus;5</p>
+          <p class="step">0 &times; (&minus;5) = 0</p>
+          <p class="step">&minus;1 &times; (&minus;5) = <strong>+5</strong></p>
+          <p class="step because">Each line goes up by 5. The pattern cannot do anything else, so two negatives must give a positive. You never have to remember the rule &mdash; you can rebuild it in ten seconds.</p>
+        </div>
+
+        <div class="worked">
+          <h4>Order of operations</h4>
+          <p class="step">What is 6 + 2 &times; 5?</p>
+          <p class="step">Two answers are possible &mdash; 40 if you work left to right, 16 if you multiply first. A bill, a contract and a calculator all need one agreed answer, so there is a convention:</p>
+          <p class="step"><strong>Brackets, then powers, then multiply and divide (left to right), then add and subtract (left to right).</strong></p>
+          <p class="step">6 + 2 &times; 5 = 6 + 10 = <strong>16</strong></p>
+        </div>
+
+        <p><strong>Practice.</strong> No calculator. One line of working per step.</p>
+        <ol class="practice">
+          <li><p class="ask">&minus;9 + 4</p>
+            <details class="answer"><summary>Show the answer</summary><p class="reveal">&minus;5</p></details></li>
+          <li><p class="ask">7 &minus; 12</p>
+            <details class="answer"><summary>Show the answer</summary><p class="reveal">&minus;5</p></details></li>
+          <li><p class="ask">&minus;6 &minus; 5</p>
+            <details class="answer"><summary>Show the answer</summary><p class="reveal">&minus;11</p></details></li>
+          <li><p class="ask">&minus;3 &times; 8</p>
+            <details class="answer"><summary>Show the answer</summary><p class="reveal">&minus;24</p></details></li>
+          <li><p class="ask">&minus;7 &times; (&minus;5)</p>
+            <details class="answer"><summary>Show the answer</summary><p class="reveal">35 <span class="note">&mdash; two negatives.</span></p></details></li>
+          <li><p class="ask">&minus;36 &divide; 4</p>
+            <details class="answer"><summary>Show the answer</summary><p class="reveal">&minus;9</p></details></li>
+          <li><p class="ask">9 + 4 &times; 3</p>
+            <details class="answer"><summary>Show the answer</summary><p class="reveal">21 <span class="note">&mdash; multiply first.</span></p></details></li>
+          <li><p class="ask">(9 + 4) &times; 3</p>
+            <details class="answer"><summary>Show the answer</summary><p class="reveal">39 <span class="note">&mdash; the bracket changes everything.</span></p></details></li>
+          <li><p class="ask">20 &minus; 6 &divide; 2</p>
+            <details class="answer"><summary>Show the answer</summary><p class="reveal">17</p></details></li>
+          <li><p class="ask">3 &times; (8 &minus; 5)<sup>2</sup></p>
+            <details class="answer"><summary>Show the answer</summary><p class="reveal">27 <span class="note">&mdash; bracket, then the power, then multiply.</span></p></details></li>
+        </ol>
+      </div>
+
+      <!-- ===================== 1.4 ===================== -->
+      <div class="topic">
+        <h3>1.4&ensp;Fractions, decimals and percentages</h3>
+
+        <div class="situation">
+          <p class="ask">How many half-bags fit into three-quarters of a bag?</p>
+          <p>You can answer that without any method at all. Say the answer out loud, then look at how it is written down &mdash; the writing will make far more sense in that order.</p>
+        </div>
+
+        <div class="worked">
+          <h4>Adding: you cannot add quarters to sixths</h4>
+          <p class="step">3/4 + 1/6</p>
+          <p class="step">Change both to twelfths: &nbsp; 9/12 + 2/12</p>
+          <p class="step">= <strong>11/12</strong></p>
+          <p class="step because">A common denominator is just a change of unit, the same as converting kilograms to grams before adding.</p>
+        </div>
+
+        <div class="worked">
+          <h4>Dividing: &ldquo;how many of these fit into that&rdquo;</h4>
+          <p class="step">3/4 &divide; 1/2 &nbsp; &mdash; how many half-bags fit into three-quarters of a bag?</p>
+          <p class="step">One and a half. You knew that before any method.</p>
+          <p class="step">The method: invert the second fraction and multiply. &nbsp; 3/4 &times; 2/1 = 6/4 = <strong>3/2</strong>, which is 1&frac12;.</p>
+        </div>
+
+        <div class="worked">
+          <h4>Percentages: estimate first</h4>
+          <p class="step">Find 15% of $340.</p>
+          <p class="step">10% is $34, so the answer is a bit over $50. <span class="because">Estimating first catches every decimal-point error.</span></p>
+          <p class="step">0.15 &times; 340 = <strong>$51</strong></p>
+        </div>
+
+        <ol class="practice">
+          <li><p class="ask">3/4 + 1/6</p>
+            <details class="answer"><summary>Show the answer</summary><p class="reveal">11/12</p></details></li>
+          <li><p class="ask">5/8 &minus; 1/4</p>
+            <details class="answer"><summary>Show the answer</summary><p class="reveal">3/8</p></details></li>
+          <li><p class="ask">2/3 &times; 3/5</p>
+            <details class="answer"><summary>Show the answer</summary><p class="reveal">2/5</p></details></li>
+          <li><p class="ask">3/4 &divide; 1/2</p>
+            <details class="answer"><summary>Show the answer</summary><p class="reveal">3/2, or 1&frac12;</p></details></li>
+          <li><p class="ask">Write 5/8 as a decimal and as a percentage.</p>
+            <details class="answer"><summary>Show the answer</summary><p class="reveal">0.625 and 62.5%</p></details></li>
+          <li><p class="ask">Find 15% of $340.</p>
+            <details class="answer"><summary>Show the answer</summary><p class="reveal">$51</p></details></li>
+          <li><p class="ask">A quantity rises from 40 to 50. What is the percentage increase?</p>
+            <details class="answer"><summary>Show the answer</summary><p class="reveal">25% <span class="note">&mdash; the rise is 10, and 10 &divide; 40 = 0.25.</span></p></details></li>
+        </ol>
+
+        <div class="situation" style="margin-top:1.5rem;">
+          <p class="ask">On the farm.</p>
+          <p>A field is 3/4 of a hectare and fertiliser goes on at 180&nbsp;kg per hectare. How much do you need?</p>
+          <details class="answer" style="margin-top:0.3rem;"><summary>Show the working</summary>
+            <p class="reveal" style="font-weight:400;">3/4 &times; 180 = <strong>135&nbsp;kg</strong></p></details>
+        </div>
+      </div>
+
+      <!-- ===================== errors ===================== -->
+      <div class="errors">
+        <h3>Watch out for these</h3>
+        <dl>
+          <dt>Adding fractions by adding the tops and the bottoms</dt>
+          <dd>1/2 + 1/2 would come out as 2/4, which is a half. Test any method on something you already know the answer to.</dd>
+
+          <dt>Losing the sign when a negative is in front of a bracket</dt>
+          <dd>This is the most expensive single error in the whole course. Write the multiplication out term by term rather than doing it in your head.</dd>
+
+          <dt>Working an expression strictly left to right</dt>
+          <dd>6 + 2 &times; 5 is 16, not 40. Multiplication and division come before addition and subtraction.</dd>
+
+          <dt>Reading 0.5% as 0.5</dt>
+          <dd>Per cent means per hundred, so 0.5% is 0.005. Half a percent of $400 cannot possibly be $200.</dd>
+
+          <dt>Assuming a 20% rise then a 20% fall gets you back</dt>
+          <dd>$500 up 20% is $600; $600 down 20% is $480. The fall is taken on the larger amount, so it removes more than the rise added.</dd>
+
+          <dt>Thinking every square root is irrational</dt>
+          <dd>&radic;49 is 7 and &radic;0.25 is 0.5. Work out the value before you classify it.</dd>
+        </dl>
+      </div>
+
+      <!-- ===================== tail ===================== -->
+      <div class="tail">
+        <h3>Before you move on</h3>
+        <p>You should be able to say which kind of number you are dealing with, handle signed numbers and brackets without hesitating, and move between a fraction, a decimal and a percentage in either direction.</p>
+        <p style="color:var(--ink-soft);">Unit 2 builds powers and roots directly on this, and Unit 3 cannot be done over shaky fraction work. If any section above is still uncertain, do it again before going on &mdash; that is cheaper now than in November.</p>
+        <p style="margin-top:1.2rem;">
+          <a class="btn" href="index.html">All units</a>
+          <span class="btn btn-waiting">Unit 2 coming soon</span>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>MAT1001 College Algebra &mdash; Antigua and Barbuda College of Advanced Studies, School of Agriculture.</p>
+    <p>Bring any question from this unit to the Monday session or to the consultation slot.</p>
+  </div>
+</footer>
+
+</body>
+</html>
