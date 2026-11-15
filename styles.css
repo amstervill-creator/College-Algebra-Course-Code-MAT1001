@@ -495,3 +495,50 @@ ol.outcomes > li::before {
   .facts dt { border-bottom: 0; padding-bottom: 0; }
   .week { grid-template-columns: 1fr; gap: 0.3rem 0; }
 }
+
+/* ==========================================================================
+   Video links — open on YouTube in a new tab
+   ========================================================================== */
+
+a.watch {
+  display: grid;
+  grid-template-columns: 2.3rem 1fr;
+  gap: 0 0.85rem;
+  align-items: start;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 0.8rem 1rem 0.85rem;
+  margin: 0 0 1.3rem;
+  color: var(--ink);
+  text-decoration: none;
+  max-width: var(--measure);
+}
+a.watch:hover { border-color: var(--field); color: var(--ink); }
+a.watch:hover .watch-title { text-decoration: underline; text-decoration-color: var(--field); text-underline-offset: 0.18em; }
+
+.watch .play {
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 50%;
+  background: var(--field);
+  position: relative;
+  margin-top: 0.1rem;
+}
+.watch .play::before {
+  content: "";
+  position: absolute;
+  left: 0.85rem;
+  top: 0.62rem;
+  width: 0.85rem;
+  height: 1.06rem;
+  background: var(--card);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+.watch-body { display: block; min-width: 0; }
+.watch-title { display: block; font-weight: 700; line-height: 1.4; }
+.watch-meta { display: block; font-family: "Archivo", sans-serif; font-size: var(--fs-small); color: var(--ink-faint); margin-top: 0.1rem; }
+.watch-why { display: block; color: var(--ink-soft); margin-top: 0.3rem; font-size: 0.97rem; line-height: 1.5; }
+.watch-pair a.watch { margin-bottom: 0.7rem; }
+.watch-pair { margin: 0 0 1.3rem; }
+@media (prefers-color-scheme: dark) { .watch .play::before { background: #10140d; } }
