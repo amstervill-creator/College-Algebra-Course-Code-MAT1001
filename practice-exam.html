@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practice Exam | MAT1001</title>
+<meta name="description" content="MAT1001 College Algebra practice end-of-term examination. Type your answers, check them, and see where you went wrong.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .xsec { margin: 2.6rem 0 0; }
+  .xsec h2 { font-size: var(--fs-h2); margin: 0; }
+  .xmarks { font-size: var(--fs-small); color: var(--ink-faint); margin: 0.2rem 0 1rem; font-style: italic; }
+  .xq { border-top: 1px solid var(--rule); padding: 1rem 0 0.4rem; }
+  .xstem { margin: 0 0 0.4rem; }
+  .xn { font-family: "Archivo", sans-serif; font-weight: 700; color: var(--field-deep); margin-right: 0.6rem; }
+  .xi { margin: 0 0 1rem; }
+  .xline { display: grid; grid-template-columns: 1fr auto; gap: 0 1rem; align-items: start; }
+  .xtext { margin: 0 0 0.45rem; }
+  .xpl { font-weight: 700; margin-right: 0.5rem; }
+  .xmk { font-weight: 700; font-family: "Archivo", sans-serif; color: var(--ink-soft); white-space: nowrap; }
+  .fxrow { display: flex; flex-wrap: wrap; gap: 0.6rem 1.2rem; align-items: center; }
+  .fxjoin { gap: 0.5rem 0.5rem; }
+  .fx { display: inline-flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+  .fx-pre, .fx-suf { color: var(--ink-soft); }
+  .xi input[type=text], .xi select {
+    font: inherit; font-size: 1.05rem; color: var(--ink); background: var(--card);
+    border: 1.5px solid var(--rule); border-radius: 6px; padding: 0.42rem 0.55rem; min-height: 2.6rem;
+  }
+  .in-num { width: 7.5rem; }
+  .fx-wide { flex: 1 1 16rem; }
+  .fx-wide input { width: 100%; max-width: 22rem; font-family: ui-monospace, Menlo, Consolas, monospace !important; }
+  .xi select { max-width: 100%; }
+  .xi input:focus, .xi select:focus { outline: 3px solid var(--field-wash); border-color: var(--field); }
+  .mx-in .mxg { gap: 0.3rem 0.4rem; padding: 0.3rem 0.45rem; }
+  .mx-in input { width: 4.2rem; text-align: center; }
+  .fxhint { font-size: var(--fs-small); color: var(--ink-faint); margin: 0.35rem 0 0; }
+  .selfnote { font-size: var(--fs-small); color: var(--ink-soft); margin: 0; }
+  .selfmark { border: 1px solid var(--rule); border-radius: 8px; padding: 0.5rem 0.9rem 0.7rem; margin: 0.6rem 0 0; display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; }
+  .selfmark legend { font-weight: 700; font-size: var(--fs-small); padding: 0 0.3rem; }
+  .xi.ok input, .xi.ok select { border-color: var(--field); }
+  .xi.bad input.wrongf, .xi.bad select.wrongf { border-color: var(--mark); background: color-mix(in srgb, var(--mark) 7%, var(--card)); }
+  .fb { margin: 0.7rem 0 0; border-radius: 8px; padding: 0.8rem 1rem; font-size: 0.97rem; }
+  .fb.ok { background: var(--field-wash); border-left: 4px solid var(--field); }
+  .fb.bad { background: color-mix(in srgb, var(--mark) 8%, var(--card)); border-left: 4px solid var(--mark); }
+  .fb.self { background: var(--card); border: 1px solid var(--rule); border-left: 4px solid var(--ink-faint); }
+  .fb h4 { margin: 0 0 0.3rem; font-size: 1rem; }
+  .fb .why { font-weight: 700; margin: 0.2rem 0 0.5rem; }
+  .fb ol { margin: 0.4rem 0 0.4rem 1.1rem; padding: 0; }
+  .fb li { margin: 0.15rem 0; }
+  .fb .mk { display: inline-block; font-family: "Archivo", sans-serif; font-size: 0.75rem; font-weight: 700; color: var(--field-deep); border: 1px solid var(--rule); border-radius: 4px; padding: 0 0.3rem; margin-left: 0.35rem; }
+  .fb .tip { font-style: italic; color: var(--ink-soft); }
+  .fb .rev { margin: 0.5rem 0 0; }
+  .xbar { position: sticky; bottom: 0; z-index: 5; background: var(--paper); border-top: 1px solid var(--rule); padding: 0.8rem 0; margin-top: 2rem; }
+  .xbar .wrap { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+  .xbar .count { font-size: var(--fs-small); color: var(--ink-soft); margin-right: auto; }
+  button.btn { font: inherit; cursor: pointer; border: 0; }
+  #results { scroll-margin-top: 1rem; }
+  .res { background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 1.1rem 1.2rem; margin: 1.6rem 0; }
+  .res h2 { margin: 0 0 0.2rem; font-size: var(--fs-h2); }
+  .big { font-family: "Archivo", sans-serif; font-size: 2.4rem; font-weight: 700; color: var(--field-deep); margin: 0.2rem 0; }
+  .res table { border-collapse: collapse; width: 100%; margin: 0.8rem 0; font-size: 0.95rem; }
+  .res th, .res td { text-align: left; padding: 0.45rem 0.4rem; border-bottom: 1px solid var(--rule); vertical-align: middle; }
+  .res td.n { white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .meter { height: 0.55rem; background: var(--grid); border-radius: 99px; overflow: hidden; min-width: 4rem; }
+  .meter span { display: block; height: 100%; background: var(--field); }
+  .meter.low span { background: var(--mark); }
+  .res .next li { margin: 0.25rem 0; }
+  .timer { font-family: "Archivo", sans-serif; font-variant-numeric: tabular-nums; font-weight: 600; }
+  details.formula { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 0.6rem 1rem; margin: 1rem 0; }
+  details.formula summary { cursor: pointer; font-weight: 700; }
+  @media (max-width: 30rem) { .in-num { width: 6rem; } .xbar { padding: 0.5rem 0; } .xbar .count { display: none; } .xbar .btn { padding: 0.5rem 0.8rem; font-size: 0.95rem; } .xbar .wrap { flex-wrap: nowrap; justify-content: flex-end; } }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="backlink" href="index.html">All units</a>
+    <p class="course-code">Practice examination</p>
+    <h1>Practice end-of-term exam</h1>
+    <p class="school">Sections A to H &nbsp;|&nbsp; 100 marks &nbsp;|&nbsp; 2 hours &nbsp;|&nbsp; Same layout as the real paper</p>
+  </div>
+</header>
+
+<main>
+<section class="page-section">
+<div class="wrap">
+
+<p class="lead unit-lead">Sit this like the real thing: paper, pencil, ruler and calculator (in degree mode), and no notes. Work each question on paper, then type your final answer in the box. When you have finished, press <strong>Check my answers</strong> and the page will show you what you got right, and for anything wrong, the full working and where it usually goes wrong.</p>
+
+<div class="callout">
+  <p><strong>How the page marks you.</strong> Most questions get full marks or none here. In the real exam you also earn marks for correct working, so when an answer is wrong, compare your working with the solution line by line. Two questions (a graph and a “show that”) you mark yourself against the model answer.</p>
+  <p><strong>Typing algebra.</strong> Type x² as <code>x^2</code>, and use brackets: <code>2x(5x+2)</code>. Negative numbers can be typed with an ordinary minus sign.</p>
+</div>
+
+<p class="howto">Your answers are kept on this device as you type, so you can stop and come back. <span id="clock" class="timer"></span></p>
+
+<details class="formula"><summary>Formula sheet</summary>
+<div class="tablewrap"><table class="ref"><tbody><tr><th scope="row">Straight line</th><td>slope m = (y₂ − y₁) ÷ (x₂ − x₁)      y = mx + c</td></tr><tr><th scope="row">Arithmetic</th><td>aₙ = a + (n − 1)d      Sₙ = n ÷ 2 × [2a + (n − 1)d] = n ÷ 2 × (first + last)</td></tr><tr><th scope="row">Geometric</th><td>aₙ = a × rⁿ⁻¹      Sₙ = a(rⁿ − 1) ÷ (r − 1)      growth of p%: r = 1 + p ÷ 100</td></tr><tr><th scope="row">Quadratic formula</th><td>For ax² + bx + c = 0:   x = [−b ± √(b² − 4ac)] ÷ 2a</td></tr><tr><th scope="row">Area and volume</th><td>Rectangle A = lw   Triangle A = ½bh   Circle A = πr², C = 2πr   Box V = lwh   Cylinder V = πr²h</td></tr><tr><th scope="row">Conversions</th><td>1 hectare = 10,000 m²      1 m³ = 1,000 litres</td></tr><tr><th scope="row">Right-angled triangles</th><td>a² + b² = c²      sin θ = opp ÷ hyp    cos θ = adj ÷ hyp    tan θ = opp ÷ adj</td></tr><tr><th scope="row">Calculus</th><td>If y = xⁿ, dy/dx = nxⁿ⁻¹      ∫xⁿ dx = xⁿ⁺¹ ÷ (n + 1) + C</td></tr></tbody></table></div>
+</details>
+
+<div id="results" hidden></div>
+
+<section class="xsec" id="sec-A"><h2>Section A — Number Systems, Exponents and Radicals</h2><p class="xmarks">10 marks</p>
+<div class="xq"><p class="xstem"><span class="xn">A1</span>State whether each number is rational or irrational.</p>
+<div class="xi" id="it-A1a"><div class="xline"><p class="xtext"><span class="xpl">(a)</span>√64</p><span class="xmk">[1]</span></div><div class="fxrow"><label class="fx"><select id="A1a_0"><option value="">Choose…</option><option>Rational</option><option>Irrational</option></select></label></div><div class="fb" id="fb-A1a" hidden></div></div>
+<div class="xi" id="it-A1b"><div class="xline"><p class="xtext"><span class="xpl">(b)</span>√20</p><span class="xmk">[1]</span></div><div class="fxrow"><label class="fx"><select id="A1b_0"><option value="">Choose…</option><option>Rational</option><option>Irrational</option></select></label></div><div class="fb" id="fb-A1b" hidden></div></div>
+</div>
+<div class="xq">
+<div class="xi" id="it-A2"><div class="xline"><p class="xtext"><span class="xn">A2</span>Evaluate  −5 + 20 ÷ (−5) × 3</p><span class="xmk">[2]</span></div><div class="fxrow"><label class="fx"><input id="A2_0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="answer"></label></div><div class="fb" id="fb-A2" hidden></div></div>
+</div>
+<div class="xq">
+<div class="xi" id="it-A3"><div class="xline"><p class="xtext"><span class="xn">A3</span>Simplify  a⁷ × a² ÷ a⁶</p><span class="xmk">[2]</span></div><div class="fxrow"><label class="fx fx-wide"><input id="A3_0" type="text" autocomplete="off" spellcheck="false" class="in-expr" aria-label="expression"></label></div><p class="fxhint">Type powers with ^, for example a^5.</p><div class="fb" id="fb-A3" hidden></div></div>
+</div>
+<div class="xq">
+<div class="xi" id="it-A4"><div class="xline"><p class="xtext"><span class="xn">A4</span>Evaluate  64²ᐟ³</p><span class="xmk">[2]</span></div><div class="fxrow"><label class="fx"><input id="A4_0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="answer"></label></div><div class="fb" id="fb-A4" hidden></div></div>
+</div>
+<div class="xq">
+<div class="xi" id="it-A5"><div class="xline"><p class="xtext"><span class="xn">A5</span>Simplify  √12 + √27,  giving your answer in the form a√3</p><span class="xmk">[2]</span></div><div class="fxrow"><label class="fx"><input id="A5_0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="answer"><span class="fx-suf">√3</span></label></div><div class="fb" id="fb-A5" hidden></div></div>
+</div>
+</section>
+<section class="xsec" id="sec-B"><h2>Section B — Equations, Inequalities and Absolute Value</h2><p class="xmarks">12 marks</p>
+<div class="xq">
+<div class="xi" id="it-B1"><div class="xline"><p class="xtext"><span class="xn">B1</span>Solve  2(x − 5) = x + 3</p><span class="xmk">[3]</span></div><div class="fxrow"><label class="fx"><span class="fx-pre">x =</span><input id="B1_0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="x ="></label></div><div class="fb" id="fb-B1" hidden></div></div>
+</div>
+<div class="xq">
+<div class="xi" id="it-B2"><div class="xline"><p class="xtext"><span class="xn">B2</span>Solve the inequality  9 − 4x ≥ 21</p><span class="xmk">[3]</span></div><div class="fxrow fxjoin"><label class="fx"><span class="fx-pre">x</span><select id="B2_0" class="in-sign" aria-label="inequality sign"><option value="">?</option><option>&lt;</option><option>≤</option><option>&gt;</option><option>≥</option></select></label><label class="fx"><input id="B2_1" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="answer"></label></div><div class="fb" id="fb-B2" hidden></div></div>
+</div>
+<div class="xq">
+<div class="xi" id="it-B3"><div class="xline"><p class="xtext"><span class="xn">B3</span>Solve  |x − 1| = 6</p><span class="xmk">[2]</span></div><div class="fxrow"><label class="fx"><span class="fx-pre">x =</span><input id="B3_0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="x ="></label><label class="fx"><span class="fx-pre">or  x =</span><input id="B3_1" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="or  x ="></label></div><div class="fb" id="fb-B3" hidden></div></div>
+</div>
+<div class="xq"><p class="xstem"><span class="xn">B4</span>Eggs are graded “medium” when their mass m grams is within 3 g of 55 g.</p>
+<div class="xi" id="it-B4a"><div class="xline"><p class="xtext"><span class="xpl">(a)</span>Write this condition as an absolute value inequality.</p><span class="xmk">[1]</span></div><div class="fxrow fxjoin"><label class="fx"><span class="fx-pre">|m −</span><input id="B4a_0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="|m −"></label><label class="fx"><span class="fx-pre">| ≤</span><input id="B4a_1" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="| ≤"></label></div><div class="fb" id="fb-B4a" hidden></div></div>
+<div class="xi" id="it-B4b"><div class="xline"><p class="xtext"><span class="xpl">(b)</span>Solve your inequality, and state whether an egg of 51 g is medium. Give your answer in a sentence.</p><span class="xmk">[3]</span></div><div class="fxrow fxjoin"><label class="fx"><input id="B4b_0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="answer"></label><label class="fx"><span class="fx-pre">≤ m ≤</span><input id="B4b_1" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="≤ m ≤"></label><label class="fx"><span class="fx-pre">Is a 51 g egg medium?</span><select id="B4b_2"><option value="">Choose…</option><option>Yes</option><option>No</option></select></label></div><div class="fb" id="fb-B4b" hidden></div></div>
+</div>
+</section>
+<section class="xsec" id="sec-C"><h2>Section C — Coordinate Geometry and Graphing</h2><p class="xmarks">10 marks</p>
+<div class="xq"><p class="xstem"><span class="xn">C1</span>The line  x + 2y = 8  is to be drawn on the grid below.</p>
+<div class="xi" id="it-C1a"><div class="xline"><p class="xtext"><span class="xpl">(a)</span>Find the x-intercept and the y-intercept of the line.</p><span class="xmk">[2]</span></div><div class="fxrow"><label class="fx"><span class="fx-pre">x-intercept: (</span><input id="C1a_0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="x-intercept: ("><span class="fx-suf">, 0)</span></label><label class="fx"><span class="fx-pre">y-intercept: (0,</span><input id="C1a_1" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="y-intercept: (0,"><span class="fx-suf">)</span></label></div><div class="fb" id="fb-C1a" hidden></div></div>
+<div class="xi" id="it-C1b"><div class="xline"><p class="xtext"><span class="xpl">(b)</span>Draw the line on the grid.</p><span class="xmk">[2]</span></div><p class="selfnote">Do this one on paper. When you press <strong>Check my answers</strong>, compare yours with the model answer and mark it yourself.</p><fieldset class="selfmark" id="C1b_self" hidden><legend>How did you do?</legend><label><input type="radio" name="C1b_s" value="2"> Mine matches (2)</label><label><input type="radio" name="C1b_s" value="1"> Partly (1)</label><label><input type="radio" name="C1b_s" value="0"> Not yet (0)</label></fieldset><div class="fb" id="fb-C1b" hidden></div></div>
+</div>
+<div class="xq">
+<div class="xi" id="it-C2"><div class="xline"><p class="xtext"><span class="xn">C2</span>Find the slope of the line through (0, 3) and (5, 13).</p><span class="xmk">[2]</span></div><div class="fxrow"><label class="fx"><input id="C2_0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="answer"></label></div><div class="fb" id="fb-C2" hidden></div></div>
+</div>
+<div class="xq"><p class="xstem"><span class="xn">C3</span>The fuel in a tractor’s tank after h hours of work is F = 72 − 6h litres.</p>
+<div class="xi" id="it-C3a"><div class="xline"><p class="xtext"><span class="xpl">(a)</span>State the slope and the F-intercept, and say what each one means.</p><span class="xmk">[2]</span></div><div class="fxrow"><label class="fx"><span class="fx-pre">Slope =</span><input id="C3a_0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="Slope ="></label><label class="fx"><span class="fx-pre">The slope means</span><select id="C3a_1"><option value="">Choose…</option><option>6 litres of fuel are used every hour</option><option>the tank is empty after 6 hours</option><option>the tank holds 6 litres</option></select></label><label class="fx"><span class="fx-pre">F-intercept =</span><input id="C3a_2" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="F-intercept ="></label><label class="fx"><span class="fx-pre">The intercept means</span><select id="C3a_3"><option value="">Choose…</option><option>the tank holds 72 litres at the start</option><option>the tractor works for 72 hours</option><option>the tank is empty after 72 hours</option></select></label></div><div class="fb" id="fb-C3a" hidden></div></div>
+<div class="xi" id="it-C3b"><div class="xline"><p class="xtext"><span class="xpl">(b)</span>After how many hours is it empty?</p><span class="xmk">[2]</span></div><div class="fxrow"><label class="fx"><input id="C3b_0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="answer"><span class="fx-suf">hours</span></label></div><div class="fb" id="fb-C3b" hidden></div></div>
+</div>
+</section>
+<section class="xsec" id="sec-D"><h2>Section D — Sequences and Series</h2><p class="xmarks">14 marks</p>
+<div class="xq"><p class="xstem"><span class="xn">D1</span>The sequence 3, 8, 13, … is arithmetic.</p>
+<div class="xi" id="it-D1a"><div class="xline"><p class="xtext"><span class="xpl">(a)</span>Find the 20th term.</p><span class="xmk">[2]</span></div><div class="fxrow"><label class="fx"><input id="D1a_0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="answer"></label></div><div class="fb" id="fb-D1a" hidden></div></div>
+<div class="xi" id="it-D1b"><div class="xline"><p class="xtext"><span class="xpl">(b)</span>Find the sum of the first 20 terms.</p><span class="xmk">[2]</span></div><div class="fxrow"><label class="fx"><input id="D1b_0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="answer"></label></div><div class="fb" id="fb-D1b" hidden></div></div>
+</div>
+<div class="xq"><p class="xstem"><span class="xn">D2</span>An irrigation system costs $20,000 and loses $2,500 of value each year (straight-line depreciation).</p>
+<div class="xi" id="it-D2a"><div class="xline"><p class="xtext"><span class="xpl">(a)</span>Write a formula for its value V, in dollars, after n years.</p><span class="xmk">[2]</span></div><div class="fxrow"><label class="fx fx-wide"><span class="fx-pre">V =</span><input id="D2a_0" type="text" autocomplete="off" spellcheck="false" class="in-expr" aria-label="V ="></label></div><p class="fxhint">Use n for the number of years, for example 500 − 20n.</p><div class="fb" id="fb-D2a" hidden></div></div>
+<div class="xi" id="it-D2b"><div class="xline"><p class="xtext"><span class="xpl">(b)</span>After how many years is it worth $5,000?</p><span class="xmk">[2]</span></div><div class="fxrow"><label class="fx"><input id="D2b_0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="answer"><span class="fx-suf">years</span></label></div><div class="fb" id="fb-D2b" hidden></div></div>
+</div>
+<div class="xq"><p class="xstem"><span class="xn">D3</span>A farm loan of $5,000 is charged 4% compound interest each year. No repayments are made.</p>
+<div class="xi" id="it-D3a"><div class="xline"><p class="xtext"><span class="xpl">(a)</span>State the common ratio r.</p><span class="xmk">[1]</span></div><div class="fxrow"><label class="fx"><span class="fx-pre">r =</span><input id="D3a_0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="r ="></label></div><div class="fb" id="fb-D3a" hidden></div></div>
+<div class="xi" id="it-D3b"><div class="xline"><p class="xtext"><span class="xpl">(b)</span>Find the amount owed after 5 years, to the nearest cent.</p><span class="xmk">[2]</span></div><div class="fxrow"><label class="fx"><span class="fx-pre">$</span><input id="D3b_0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="$"></label></div><div class="fb" id="fb-D3b" hidden></div></div>
+</div>
+<div class="xq">
+<div class="xi" id="it-D4"><div class="xline"><p class="xtext"><span class="xn">D4</span>A rabbit unit sells 30 rabbits in month 1, and sales rise by 10% each month. Find the total number of rabbits over the first 6 months, to the nearest whole number.</p><span class="xmk">[3]</span></div><div class="fxrow"><label class="fx"><input id="D4_0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="answer"><span class="fx-suf">rabbits</span></label></div><div class="fb" id="fb-D4" hidden></div></div>
+</div>
+</section>
+<section class="xsec" id="sec-E"><h2>Section E — Matrices</h2><p class="xmarks">10 marks</p>
+<div class="mats"><span class="mat"><span class="mlab">P =</span><span class="mx" role="img" aria-label="matrix 1 4; 3 −2"><span class="mxg" style="grid-template-columns:repeat(2,auto)"><span>1</span><span>4</span><span>3</span><span>−2</span></span></span></span><span class="mat"><span class="mlab">Q =</span><span class="mx" role="img" aria-label="matrix 2 −1; 5 0"><span class="mxg" style="grid-template-columns:repeat(2,auto)"><span>2</span><span>−1</span><span>5</span><span>0</span></span></span></span></div>
+<div class="xq"><p class="xstem"><span class="xn">E1</span>Use the matrices P and Q given above.</p>
+<div class="xi" id="it-E1a"><div class="xline"><p class="xtext"><span class="xpl">(a)</span>Find P + Q.</p><span class="xmk">[2]</span></div><div class="fxrow"><span class="fx"><span class="mx mx-in"><span class="mxg" style="grid-template-columns:repeat(2,auto)"><input id="E1a_0_0_0" type="text" inputmode="decimal" autocomplete="off" aria-label="row 1 column 1"><input id="E1a_0_0_1" type="text" inputmode="decimal" autocomplete="off" aria-label="row 1 column 2"><input id="E1a_0_1_0" type="text" inputmode="decimal" autocomplete="off" aria-label="row 2 column 1"><input id="E1a_0_1_1" type="text" inputmode="decimal" autocomplete="off" aria-label="row 2 column 2"></span></span></span></div><div class="fb" id="fb-E1a" hidden></div></div>
+<div class="xi" id="it-E1b"><div class="xline"><p class="xtext"><span class="xpl">(b)</span>Find 3P − Q.</p><span class="xmk">[2]</span></div><div class="fxrow"><span class="fx"><span class="mx mx-in"><span class="mxg" style="grid-template-columns:repeat(2,auto)"><input id="E1b_0_0_0" type="text" inputmode="decimal" autocomplete="off" aria-label="row 1 column 1"><input id="E1b_0_0_1" type="text" inputmode="decimal" autocomplete="off" aria-label="row 1 column 2"><input id="E1b_0_1_0" type="text" inputmode="decimal" autocomplete="off" aria-label="row 2 column 1"><input id="E1b_0_1_1" type="text" inputmode="decimal" autocomplete="off" aria-label="row 2 column 2"></span></span></span></div><div class="fb" id="fb-E1b" hidden></div></div>
+</div>
+<div class="xq">
+<div class="xi" id="it-E2"><div class="xline"><p class="xtext"><span class="xn">E2</span>Find PQ.</p><span class="xmk">[3]</span></div><div class="fxrow"><span class="fx"><span class="mx mx-in"><span class="mxg" style="grid-template-columns:repeat(2,auto)"><input id="E2_0_0_0" type="text" inputmode="decimal" autocomplete="off" aria-label="row 1 column 1"><input id="E2_0_0_1" type="text" inputmode="decimal" autocomplete="off" aria-label="row 1 column 2"><input id="E2_0_1_0" type="text" inputmode="decimal" autocomplete="off" aria-label="row 2 column 1"><input id="E2_0_1_1" type="text" inputmode="decimal" autocomplete="off" aria-label="row 2 column 2"></span></span></span></div><div class="fb" id="fb-E2" hidden></div></div>
+</div>
+<div class="xq">
+<div class="xi" id="it-E3"><div class="xline"><p class="xtext"><span class="xn">E3</span>A market stall sells tomatoes and sweet peppers. In week 1 it sells 20 kg of tomatoes and 15 kg of peppers. In week 2 it sells 25 kg of tomatoes and 10 kg of peppers. Tomatoes sell at $6 per kg and peppers at $8 per kg. Write the sales as a 2 × 2 matrix and the prices as a column matrix, and use a matrix product to find the takings for each week.</p><span class="xmk">[3]</span></div><div class="fxrow"><label class="fx"><span class="fx-pre">Week 1: $</span><input id="E3_0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="Week 1: $"></label><label class="fx"><span class="fx-pre">Week 2: $</span><input id="E3_1" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="Week 2: $"></label></div><div class="fb" id="fb-E3" hidden></div></div>
+</div>
+</section>
+<section class="xsec" id="sec-F"><h2>Section F — Polynomials and Factorisation</h2><p class="xmarks">12 marks</p>
+<div class="xq">
+<div class="xi" id="it-F1"><div class="xline"><p class="xtext"><span class="xn">F1</span>Simplify  (3x² + 5x − 2) − (x² − 2x + 4)</p><span class="xmk">[2]</span></div><div class="fxrow"><label class="fx fx-wide"><input id="F1_0" type="text" autocomplete="off" spellcheck="false" class="in-expr" aria-label="expression"></label></div><p class="fxhint">Type x² as x^2.</p><div class="fb" id="fb-F1" hidden></div></div>
+</div>
+<div class="xq">
+<div class="xi" id="it-F2"><div class="xline"><p class="xtext"><span class="xn">F2</span>Expand and simplify  (x + 6)(2x − 1)</p><span class="xmk">[2]</span></div><div class="fxrow"><label class="fx fx-wide"><input id="F2_0" type="text" autocomplete="off" spellcheck="false" class="in-expr" aria-label="expression"></label></div><div class="fb" id="fb-F2" hidden></div></div>
+</div>
+<div class="xq"><p class="xstem"><span class="xn">F3</span>Factorise completely.</p>
+<div class="xi" id="it-F3a"><div class="xline"><p class="xtext"><span class="xpl">(a)</span>10x² + 4x</p><span class="xmk">[2]</span></div><div class="fxrow"><label class="fx fx-wide"><input id="F3a_0" type="text" autocomplete="off" spellcheck="false" class="in-expr" aria-label="expression"></label></div><p class="fxhint">Type brackets, for example 3x(2x+1).</p><div class="fb" id="fb-F3a" hidden></div></div>
+<div class="xi" id="it-F3b"><div class="xline"><p class="xtext"><span class="xpl">(b)</span>x² − 5x − 14</p><span class="xmk">[2]</span></div><div class="fxrow"><label class="fx fx-wide"><input id="F3b_0" type="text" autocomplete="off" spellcheck="false" class="in-expr" aria-label="expression"></label></div><div class="fb" id="fb-F3b" hidden></div></div>
+<div class="xi" id="it-F3c"><div class="xline"><p class="xtext"><span class="xpl">(c)</span>5x² − 20</p><span class="xmk">[2]</span></div><div class="fxrow"><label class="fx fx-wide"><input id="F3c_0" type="text" autocomplete="off" spellcheck="false" class="in-expr" aria-label="expression"></label></div><div class="fb" id="fb-F3c" hidden></div></div>
+<div class="xi" id="it-F3d"><div class="xline"><p class="xtext"><span class="xpl">(d)</span>2x² + 5x + 3</p><span class="xmk">[2]</span></div><div class="fxrow"><label class="fx fx-wide"><input id="F3d_0" type="text" autocomplete="off" spellcheck="false" class="in-expr" aria-label="expression"></label></div><div class="fb" id="fb-F3d" hidden></div></div>
+</div>
+</section>
+<section class="xsec" id="sec-G"><h2>Section G — Quadratic Equations</h2><p class="xmarks">12 marks</p>
+<div class="xq">
+<div class="xi" id="it-G1"><div class="xline"><p class="xtext"><span class="xn">G1</span>Solve by factorising:  x² + 3x − 10 = 0</p><span class="xmk">[3]</span></div><div class="fxrow"><label class="fx"><span class="fx-pre">x =</span><input id="G1_0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="x ="></label><label class="fx"><span class="fx-pre">or  x =</span><input id="G1_1" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="or  x ="></label></div><div class="fb" id="fb-G1" hidden></div></div>
+</div>
+<div class="xq">
+<div class="xi" id="it-G2"><div class="xline"><p class="xtext"><span class="xn">G2</span>Use the quadratic formula to solve  x² − 6x + 3 = 0,  giving your answers to 2 decimal places.</p><span class="xmk">[4]</span></div><div class="fxrow"><label class="fx"><span class="fx-pre">x =</span><input id="G2_0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="x ="></label><label class="fx"><span class="fx-pre">or  x =</span><input id="G2_1" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="or  x ="></label></div><div class="fb" id="fb-G2" hidden></div></div>
+</div>
+<div class="xq"><p class="xstem"><span class="xn">G3</span>A rectangular pen is 3 m longer than it is wide. Its area is 70 m². Let the width be x metres.</p>
+<div class="xi" id="it-G3a"><div class="xline"><p class="xtext"><span class="xpl">(a)</span>Show that  x² + 3x − 70 = 0.</p><span class="xmk">[1]</span></div><p class="selfnote">Do this one on paper. When you press <strong>Check my answers</strong>, compare yours with the model answer and mark it yourself.</p><fieldset class="selfmark" id="G3a_self" hidden><legend>How did you do?</legend><label><input type="radio" name="G3a_s" value="1"> Mine matches (1)</label><label><input type="radio" name="G3a_s" value="0"> Not yet (0)</label></fieldset><div class="fb" id="fb-G3a" hidden></div></div>
+<div class="xi" id="it-G3b"><div class="xline"><p class="xtext"><span class="xpl">(b)</span>Solve the equation to find the width and the length of the pen.</p><span class="xmk">[4]</span></div><div class="fxrow"><label class="fx"><span class="fx-pre">Width</span><input id="G3b_0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="Width"><span class="fx-suf">m</span></label><label class="fx"><span class="fx-pre">Length</span><input id="G3b_1" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="Length"><span class="fx-suf">m</span></label></div><div class="fb" id="fb-G3b" hidden></div></div>
+</div>
+</section>
+<section class="xsec" id="sec-H"><h2>Section H — Geometry, Trigonometry and Introductory Calculus</h2><p class="xmarks">20 marks</p>
+<div class="xq">
+<div class="xi" id="it-H1"><div class="xline"><p class="xtext"><span class="xn">H1</span>A cylindrical water tank has a radius of 1 m and a height of 1.8 m. Find its capacity in litres, to the nearest litre.</p><span class="xmk">[3]</span></div><div class="fxrow"><label class="fx"><input id="H1_0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="answer"><span class="fx-suf">litres</span></label></div><div class="fb" id="fb-H1" hidden></div></div>
+</div>
+<div class="xq"><p class="xstem"><span class="xn">H2</span>A rectangular field measures 200 m by 140 m.</p>
+<div class="xi" id="it-H2a"><div class="xline"><p class="xtext"><span class="xpl">(a)</span>Find its area in hectares.</p><span class="xmk">[2]</span></div><div class="fxrow"><label class="fx"><input id="H2a_0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="answer"><span class="fx-suf">ha</span></label></div><div class="fb" id="fb-H2a" hidden></div></div>
+<div class="xi" id="it-H2b"><div class="xline"><p class="xtext"><span class="xpl">(b)</span>Fertiliser is applied at 150 kg per hectare. How much fertiliser is needed?</p><span class="xmk">[1]</span></div><div class="fxrow"><label class="fx"><input id="H2b_0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="answer"><span class="fx-suf">kg</span></label></div><div class="fb" id="fb-H2b" hidden></div></div>
+</div>
+<div class="xq">
+<div class="xi" id="it-H3"><div class="xline"><p class="xtext"><span class="xn">H3</span>You stand 20 m from the base of a silo on level ground. The angle of elevation to the top of the silo is 55°. Find the height of the silo, to 2 decimal places.</p><span class="xmk">[3]</span></div><div class="fxrow"><label class="fx"><input id="H3_0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="answer"><span class="fx-suf">m</span></label></div><div class="fb" id="fb-H3" hidden></div></div>
+</div>
+<div class="xq"><p class="xstem"><span class="xn">H4</span>A ladder 6 m long leans against a barn wall. Its foot is 1.8 m from the wall on level ground.</p>
+<div class="xi" id="it-H4a"><div class="xline"><p class="xtext"><span class="xpl">(a)</span>How high up the wall does the ladder reach? Give your answer to 2 decimal places.</p><span class="xmk">[2]</span></div><div class="fxrow"><label class="fx"><input id="H4a_0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="answer"><span class="fx-suf">m</span></label></div><div class="fb" id="fb-H4a" hidden></div></div>
+<div class="xi" id="it-H4b"><div class="xline"><p class="xtext"><span class="xpl">(b)</span>Find the angle the ladder makes with the ground, to 1 decimal place.</p><span class="xmk">[2]</span></div><div class="fxrow"><label class="fx"><input id="H4b_0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="answer"><span class="fx-suf">°</span></label></div><div class="fb" id="fb-H4b" hidden></div></div>
+</div>
+<div class="xq"><p class="xstem"><span class="xn">H5</span>The height of a crop t weeks after planting is h = 0.3t² + 2t centimetres.</p>
+<div class="xi" id="it-H5a"><div class="xline"><p class="xtext"><span class="xpl">(a)</span>Find dh/dt.</p><span class="xmk">[2]</span></div><div class="fxrow"><label class="fx fx-wide"><span class="fx-pre">dh/dt =</span><input id="H5a_0" type="text" autocomplete="off" spellcheck="false" class="in-expr" aria-label="dh/dt ="></label></div><div class="fb" id="fb-H5a" hidden></div></div>
+<div class="xi" id="it-H5b"><div class="xline"><p class="xtext"><span class="xpl">(b)</span>Find the rate at which the crop is growing at week 5. Give the units.</p><span class="xmk">[1]</span></div><div class="fxrow"><label class="fx"><input id="H5b_0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="answer"><span class="fx-suf">cm per week</span></label></div><div class="fb" id="fb-H5b" hidden></div></div>
+</div>
+<div class="xq">
+<div class="xi" id="it-H6"><div class="xline"><p class="xtext"><span class="xn">H6</span>Water flows into a tank at a rate of (4t + 1) litres per minute, where t is the time in minutes. Evaluate  ∫ from 0 to 3 of (4t + 1) dt  to find how much water flows in during the first 3 minutes.</p><span class="xmk">[4]</span></div><div class="fxrow"><label class="fx"><input id="H6_0" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" class="in-num" aria-label="answer"><span class="fx-suf">litres</span></label></div><div class="fb" id="fb-H6" hidden></div></div>
+</div>
+</section>
+
+</div>
+</section>
+
+<div class="xbar">
+  <div class="wrap">
+    <span class="count" id="count"></span>
+    <button type="button" class="btn btn-quiet" id="reset">Clear all answers</button>
+    <button type="button" class="btn" id="check">Check my answers</button>
+  </div>
+</div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>MAT1001 College Algebra &mdash; Antigua and Barbuda College of Advanced Studies, School of Agriculture.</p>
+    <p>Bring any question you could not sort out to the Monday session or to office hours (Monday 2:00&ndash;3:00&nbsp;p.m., School of Agriculture).</p>
+  </div>
+</footer>
+
+<script>
+const ITEMS = [{"id": "A1a", "label": "A1(a)", "sec": "A", "marks": 1, "steps": [["√64 = 8, a whole number, so it can be written as 8/1", "B1", "Rational"]], "answer": "Rational", "review": ["unit-01.html#t1-1", "Unit 1.1"], "f": [{"k": "sel", "opts": ["Rational", "Irrational"], "ans": "Rational", "pre": "", "m": null}]}, {"id": "A1b", "label": "A1(b)", "sec": "A", "marks": 1, "steps": [["20 is not a perfect square: √20 = 4.4721…, which never ends or repeats", "B1", "Irrational"], ["", "", "Not every square root is irrational: if the number is a perfect square, its root is a whole number."]], "answer": "Irrational", "review": ["unit-01.html#t1-1", "Unit 1.1"], "f": [{"k": "sel", "opts": ["Rational", "Irrational"], "ans": "Irrational", "pre": "", "m": null}]}, {"id": "A2", "label": "A2", "sec": "A", "marks": 2, "steps": [["20 ÷ (−5) = −4, then −4 × 3 = −12", "M1", "Divide and multiply first, sign kept"], ["−5 + (−12) = −17", "A1", "Correct answer"], ["", "", "Common mistake: an answer of −9 means you worked strictly left to right."]], "answer": "−17", "review": ["unit-01.html#t1-3", "Unit 1.3"], "f": [{"k": "num", "pre": "", "suf": "", "ans": -17, "tol": 0.0, "m": null}], "wrong": {"-9": "You worked from left to right. Division and multiplication come before addition.", "3": "You added first. Do the division and multiplication first."}}, {"id": "A3", "label": "A3", "sec": "A", "marks": 2, "steps": [["Multiplying: add the powers.  a⁷ × a² = a⁹", "M1", "Indices added"], ["Dividing: subtract the powers.  a⁹ ÷ a⁶ = a³", "A1", "Correct answer"], ["", "", "Common mistake: a¹⁴ or similar means the powers were multiplied."]], "answer": "a³", "review": ["unit-02.html#t2-1", "Unit 2.1"], "f": [{"k": "expr", "ans": "a^3", "var": "a", "form": "simple", "pre": "", "nb": 0, "m": null}]}, {"id": "A4", "label": "A4", "sec": "A", "marks": 2, "steps": [["The bottom of the fraction is the root: the cube root of 64 is 4, because 4 × 4 × 4 = 64", "M1", "Root taken first"], ["The top of the fraction is the power: 4² = 16", "A1", "Correct answer"], ["", "", "Common mistake: an answer of 128/3 means the power was read as a multiplier."]], "answer": "16", "review": ["unit-02.html#t2-7", "Unit 2.7"], "f": [{"k": "num", "pre": "", "suf": "", "ans": 16, "tol": 0.0, "m": null}], "wrong": {"42.67": "You multiplied by the fraction. The bottom number is a root, the top number is a power.", "128": "Take the cube root first: ∛64 = 4, then square it."}}, {"id": "A5", "label": "A5", "sec": "A", "marks": 2, "steps": [["√12 = √(4 × 3) = 2√3   and   √27 = √(9 × 3) = 3√3", "M1", "Both surds simplified"], ["2√3 + 3√3 = 5√3", "A1", "Like surds added"], ["", "", "Common mistake: √39 is wrong: roots do not add like that."]], "answer": "5√3", "review": ["unit-02.html#t2-6", "Unit 2.6"], "f": [{"k": "num", "pre": "", "suf": "√3", "ans": 5, "tol": 0.0, "m": null}]}, {"id": "B1", "label": "B1", "sec": "B", "marks": 3, "steps": [["Expand the bracket: 2x − 10 = x + 3", "M1", "Both terms multiplied by 2"], ["Subtract x from both sides and add 10 on both sides: 1x = 13", "M1", "Terms collected correctly"], ["Divide both sides by 1: x = 13", "A1", "Correct answer"]], "answer": "x = 13", "review": ["unit-03.html#t3-6", "Unit 3.6"], "f": [{"k": "num", "pre": "x =", "suf": "", "ans": 13, "tol": 0.0, "m": null}]}, {"id": "B2", "label": "B2", "sec": "B", "marks": 3, "steps": [["Subtract 9 from both sides: −4x ≥ 12", "M1", "Constant moved correctly"], ["Divide both sides by −4. Dividing by a negative number reverses the sign: ≥ becomes ≤", "M1", "Sign reversed"], ["x ≤ −3", "A1", "Correct answer"], ["Check with a value: x = −4 gives 9 − 4(−4) = 25, which is ≥ 21 ✓", "", "Common mistake: an answer of x ≥ −3 means the sign was not reversed."]], "answer": "x ≤ −3", "review": ["unit-04.html#t4-2", "Unit 4.2"], "f": [{"k": "sign", "ans": "≤", "pre": "x", "m": 1}, {"k": "num", "pre": "", "suf": "", "ans": -3, "tol": 0.0, "m": 2}]}, {"id": "B3", "label": "B3", "sec": "B", "marks": 2, "steps": [["Case 1: x − 1 = 6, so x = 7", "B1", "First solution"], ["Case 2: x − 1 = −6, so x = -5", "B1", "Second solution"], ["", "", "Common mistake: only one answer means the negative case was forgotten."]], "answer": "x = 7 or x = −5", "review": ["unit-04.html#t4-5", "Unit 4.5"], "f": [{"k": "num", "pre": "x =", "suf": "", "ans": 7, "tol": 0.0, "m": null}, {"k": "num", "pre": "or  x =", "suf": "", "ans": -5, "tol": 0.0, "m": null}], "unordered": true}, {"id": "B4a", "label": "B4(a)", "sec": "B", "marks": 1, "steps": [["|m − 55| ≤ 3", "B1", "≤ because “within” includes the end values"]], "answer": "|m − 55| ≤ 3", "review": ["unit-04.html#t4-6", "Unit 4.6"], "f": [{"k": "num", "pre": "|m −", "suf": "", "ans": 55, "tol": 0.0, "m": null}, {"k": "num", "pre": "| ≤", "suf": "", "ans": 3, "tol": 0.0, "m": null}]}, {"id": "B4b", "label": "B4(b)", "sec": "B", "marks": 3, "steps": [["−3 ≤ m − 55 ≤ 3", "M1", "Written as a double inequality"], ["Add 55 to all three parts: 52 ≤ m ≤ 58", "A1", "Correct range"], ["51 g is outside the range 52 to 58 g, so the egg is not medium.", "B1", "Correct conclusion in a sentence (LO10)"]], "answer": "52 ≤ m ≤ 58; the egg is not medium", "review": ["unit-04.html#t4-6", "Unit 4.6"], "f": [{"k": "num", "pre": "", "suf": "", "ans": 52, "tol": 0.0, "m": 1}, {"k": "num", "pre": "≤ m ≤", "suf": "", "ans": 58, "tol": 0.0, "m": 1}, {"k": "sel", "opts": ["Yes", "No"], "ans": "No", "pre": "Is a 51 g egg medium?", "m": 1}]}, {"id": "C1a", "label": "C1(a)", "sec": "C", "marks": 2, "steps": [["x-intercept: put y = 0.  x = 8, so x = 8.  The point is (8, 0).", "B1", "x-intercept"], ["y-intercept: put x = 0.  2y = 8, so y = 4.  The point is (0, 4).", "B1", "y-intercept"], ["", "", "Common mistake: swapping the two (setting x = 0 for the x-intercept) is the commonest error."]], "answer": "(8, 0) and (0, 4)", "review": ["unit-05.html#t5-4", "Unit 5.4"], "f": [{"k": "num", "pre": "x-intercept: (", "suf": ", 0)", "ans": 8, "tol": 0.0, "m": 1}, {"k": "num", "pre": "y-intercept: (0,", "suf": ")", "ans": 4, "tol": 0.0, "m": 1}]}, {"id": "C1b", "label": "C1(b)", "sec": "C", "marks": 2, "steps": [["Plot (8, 0) on the x-axis and (0, 4) on the y-axis.", "B1", "Both intercepts plotted correctly (follow through from (a))"], ["Rule one straight line through the two points, extended to the edges of the grid.", "B1", "Ruled straight line through both points"]], "answer": "A ruled straight line through both intercepts", "review": ["unit-05.html#t5-4", "Unit 5.4"], "self": true, "graph": "<figure class=\"figure\"><svg viewBox=\"0 0 290 190\" role=\"img\" aria-label=\"Model answer: a straight line through (8, 0) and (0, 4)\"><line x1=\"30\" y1=\"170\" x2=\"30\" y2=\"26\" class=\"g\"/><line x1=\"54\" y1=\"170\" x2=\"54\" y2=\"26\" class=\"g\"/><line x1=\"78\" y1=\"170\" x2=\"78\" y2=\"26\" class=\"g\"/><line x1=\"102\" y1=\"170\" x2=\"102\" y2=\"26\" class=\"g\"/><line x1=\"126\" y1=\"170\" x2=\"126\" y2=\"26\" class=\"g\"/><line x1=\"150\" y1=\"170\" x2=\"150\" y2=\"26\" class=\"g\"/><line x1=\"174\" y1=\"170\" x2=\"174\" y2=\"26\" class=\"g\"/><line x1=\"198\" y1=\"170\" x2=\"198\" y2=\"26\" class=\"g\"/><line x1=\"222\" y1=\"170\" x2=\"222\" y2=\"26\" class=\"g\"/><line x1=\"246\" y1=\"170\" x2=\"246\" y2=\"26\" class=\"g\"/><line x1=\"270\" y1=\"170\" x2=\"270\" y2=\"26\" class=\"g\"/><line x1=\"30\" y1=\"170\" x2=\"270\" y2=\"170\" class=\"g\"/><line x1=\"30\" y1=\"146\" x2=\"270\" y2=\"146\" class=\"g\"/><line x1=\"30\" y1=\"122\" x2=\"270\" y2=\"122\" class=\"g\"/><line x1=\"30\" y1=\"98\" x2=\"270\" y2=\"98\" class=\"g\"/><line x1=\"30\" y1=\"74\" x2=\"270\" y2=\"74\" class=\"g\"/><line x1=\"30\" y1=\"50\" x2=\"270\" y2=\"50\" class=\"g\"/><line x1=\"30\" y1=\"26\" x2=\"270\" y2=\"26\" class=\"g\"/><line x1=\"30\" y1=\"170\" x2=\"270\" y2=\"170\" class=\"ax\"/><line x1=\"30\" y1=\"170\" x2=\"30\" y2=\"26\" class=\"ax\"/><text x=\"54\" y=\"183\" class=\"tk\">1</text><text x=\"78\" y=\"183\" class=\"tk\">2</text><text x=\"102\" y=\"183\" class=\"tk\">3</text><text x=\"126\" y=\"183\" class=\"tk\">4</text><text x=\"150\" y=\"183\" class=\"tk\">5</text><text x=\"174\" y=\"183\" class=\"tk\">6</text><text x=\"198\" y=\"183\" class=\"tk\">7</text><text x=\"222\" y=\"183\" class=\"tk\">8</text><text x=\"246\" y=\"183\" class=\"tk\">9</text><text x=\"270\" y=\"183\" class=\"tk\">10</text><text x=\"24\" y=\"150\" class=\"tk\" text-anchor=\"end\">1</text><text x=\"24\" y=\"126\" class=\"tk\" text-anchor=\"end\">2</text><text x=\"24\" y=\"102\" class=\"tk\" text-anchor=\"end\">3</text><text x=\"24\" y=\"78\" class=\"tk\" text-anchor=\"end\">4</text><text x=\"24\" y=\"54\" class=\"tk\" text-anchor=\"end\">5</text><text x=\"24\" y=\"30\" class=\"tk\" text-anchor=\"end\">6</text><line x1=\"222\" y1=\"170\" x2=\"30\" y2=\"74\" class=\"l1\"/><circle cx=\"222\" cy=\"170\" r=\"4\" class=\"pt\"/><circle cx=\"30\" cy=\"74\" r=\"4\" class=\"pt\"/></svg><figcaption>Model answer: plot (8, 0) and (0, 4), then rule one straight line through them.</figcaption></figure>"}, {"id": "C2", "label": "C2", "sec": "C", "marks": 2, "steps": [["m = (y₂ − y₁) ÷ (x₂ − x₁) = (13 − 3) ÷ (5 − 0)", "M1", "Correct substitution"], ["= 10 ÷ 5 = 2", "A1", "Correct slope"], ["", "", "Common mistake: an answer of 1/2 means run was divided by rise."]], "answer": "2", "review": ["unit-05.html#t5-5", "Unit 5.5"], "f": [{"k": "num", "pre": "", "suf": "", "ans": 2, "tol": 0.0, "m": null}], "wrong": {"0.5": "You divided run by rise. Slope is rise ÷ run: change in y on top."}}, {"id": "C3a", "label": "C3(a)", "sec": "C", "marks": 2, "steps": [["Slope = −6: the amount goes down by 6 litres every hour.", "B1", "Value and meaning, with units"], ["F-intercept = 72: the tank holds 72 litres at the start.", "B1", "Value and meaning"]], "answer": "Slope −6 (6 litres lost per hour); intercept 72 (the starting amount)", "review": ["unit-05.html#t5-7", "Unit 5.7"], "f": [{"k": "num", "pre": "Slope =", "suf": "", "ans": -6, "tol": 0.0, "m": 0}, {"k": "sel", "opts": ["6 litres of fuel are used every hour", "the tank is empty after 6 hours", "the tank holds 6 litres"], "ans": "6 litres of fuel are used every hour", "pre": "The slope means", "m": 1}, {"k": "num", "pre": "F-intercept =", "suf": "", "ans": 72, "tol": 0.0, "m": 0}, {"k": "sel", "opts": ["the tank holds 72 litres at the start", "the tractor works for 72 hours", "the tank is empty after 72 hours"], "ans": "the tank holds 72 litres at the start", "pre": "The intercept means", "m": 1}]}, {"id": "C3b", "label": "C3(b)", "sec": "C", "marks": 2, "steps": [["Empty means F = 0:  72 − 6h = 0", "M1", "Equation set to zero"], ["6h = 72, so h = 12.  It is empty after 12 hours.", "A1", "Correct answer with units"]], "answer": "12 hours", "review": ["unit-05.html#t5-7", "Unit 5.7"], "f": [{"k": "num", "pre": "", "suf": "hours", "ans": 12, "tol": 0.0, "m": null}]}, {"id": "D1a", "label": "D1(a)", "sec": "D", "marks": 2, "steps": [["a₂₀ = a + (n − 1)d = 3 + 19 × 5", "M1", "Formula used with n − 1"], ["= 3 + 95 = 98", "A1", "Correct term"], ["", "", "Common mistake: 103 means n was used instead of n − 1."]], "answer": "98", "review": ["unit-06.html#t6-2", "Unit 6.2–6.3"], "f": [{"k": "num", "pre": "", "suf": "", "ans": 98, "tol": 0.0, "m": null}], "wrong": {"103": "You used n instead of n − 1. Term 20 is 19 steps on from term 1."}}, {"id": "D1b", "label": "D1(b)", "sec": "D", "marks": 2, "steps": [["S₂₀ = n ÷ 2 × (first + last) = 20 ÷ 2 × (3 + 98)", "M1", "Correct sum formula (either form)"], ["= 10 × 101 = 1,010", "A1", "Correct sum"]], "answer": "1,010", "review": ["unit-06.html#t6-2", "Unit 6.2–6.3"], "f": [{"k": "num", "pre": "", "suf": "", "ans": 1010, "tol": 0.0, "m": null}]}, {"id": "D2a", "label": "D2(a)", "sec": "D", "marks": 2, "steps": [["The same amount, $2,500, comes off every year, so this is arithmetic with d = −2,500.", "M1", "Recognises a constant decrease"], ["V = 20,000 − 2,500n", "A1", "Correct formula"]], "answer": "V = 20,000 − 2,500n", "review": ["unit-06.html#t6-2", "Unit 6.2"], "f": [{"k": "expr", "ans": "20000-2500*n", "var": "n", "form": "any", "pre": "V =", "nb": 0, "m": null}]}, {"id": "D2b", "label": "D2(b)", "sec": "D", "marks": 2, "steps": [["20,000 − 2,500n = 5,000", "M1", "Equation formed"], ["2,500n = 15,000, so n = 6.  It is worth $5,000 after 6 years.", "A1", "Correct answer"]], "answer": "6 years", "review": ["unit-06.html#t6-2", "Unit 6.2"], "f": [{"k": "num", "pre": "", "suf": "years", "ans": 6, "tol": 0.0, "m": null}]}, {"id": "D3a", "label": "D3(a)", "sec": "D", "marks": 1, "steps": [["r = 1 + 4/100 = 1.04", "B1", "Not 4, and not 0.04"]], "answer": "r = 1.04", "review": ["unit-06.html#t6-5", "Unit 6.5"], "f": [{"k": "num", "pre": "r =", "suf": "", "ans": 1.04, "tol": 0.0, "m": null}], "wrong": {"4": "r is the multiplier: 1 + 4 ÷ 100 = 1.04.", "0.04": "That is the rate, not the multiplier. Keep the 1: r = 1.04."}}, {"id": "D3b", "label": "D3(b)", "sec": "D", "marks": 2, "steps": [["Amount = 5,000 × 1.04⁵", "M1", "Geometric growth set up"], ["= 5,000 × 1.216653 = $6,083.26", "A1", "Correct amount"], ["", "", "Common mistake: 5,000 × (1 + 5 × 0.04) = $6,000.00 is simple interest."]], "answer": "$6,083.26", "review": ["unit-06.html#t6-5", "Unit 6.5"], "f": [{"k": "num", "pre": "$", "suf": "", "ans": 6083.26, "tol": 0.011, "m": null}], "wrong": {"6000": "That is simple interest. Compound interest multiplies by 1.04 five times: 5,000 × 1.04⁵."}}, {"id": "D4", "label": "D4", "sec": "D", "marks": 3, "steps": [["The same percentage rise each time, so geometric: a = 30, r = 1.1, n = 6", "M1", "a and r identified"], ["Sₙ = a(rⁿ − 1) ÷ (r − 1) = 30(1.1⁶ − 1) ÷ 0.1", "M1", "Series formula with correct values"], ["= 30 × 0.77156 ÷ 0.1 = 231.468, so 231 rabbits to the nearest whole number", "A1", "Correct total (accept the unrounded value)"], ["", "", "Common mistake: 30 × 1.1⁵ = 48.3 is the amount in the last month only, not the total."]], "answer": "231 rabbits", "review": ["unit-06.html#t6-5", "Unit 6.5"], "f": [{"k": "num", "pre": "", "suf": "rabbits", "ans": 231, "tol": 0.5, "m": null}], "wrong": {"48.32": "That is the sales in month 6 only. The question asks for the total of all six months: use the series formula.", "48": "That is the sales in month 6 only. The question asks for the total of all six months."}}, {"id": "E1a", "label": "E1(a)", "sec": "E", "marks": 2, "steps": [["Add the numbers in matching positions: 1 + 2, 4 + (−1), 3 + 5, −2 + 0", "M1", "Matching positions added (at least two correct)"], ["P + Q = [[3,3;8,−2]]", "A1", "All four correct"]], "answer": "[[3,3;8,−2]]", "review": ["unit-07.html#t7-2", "Unit 7.2"], "f": [{"k": "mat", "ans": [[3, 3], [8, -2]]}]}, {"id": "E1b", "label": "E1(b)", "sec": "E", "marks": 2, "steps": [["3P: multiply every number in P by 3: [[3,12;9,−6]]", "M1", "Scalar multiplication correct"], ["3P − Q = [[1,13;4,−6]]", "A1", "Correct matrix"]], "answer": "[[1,13;4,−6]]", "review": ["unit-07.html#t7-2", "Unit 7.2"], "f": [{"k": "mat", "ans": [[1, 13], [4, -6]]}]}, {"id": "E2", "label": "E2", "sec": "E", "marks": 3, "steps": [["Row 1: 1×2 + 4×5 = 22;   1×(−1) + 4×0 = −1", "M1", "Row-by-column method shown"], ["Row 2: 3×2 + (−2)×5 = −4;   3×(−1) + (−2)×0 = −3", "A1", "At least two entries correct"], ["PQ = [[22,−1;−4,−3]]", "A1", "All four entries correct"], ["", "", "Common mistake: multiplying matching positions gives [[2,−4;15,0]]."]], "answer": "[[22,−1;−4,−3]]", "review": ["unit-07.html#t7-3", "Unit 7.3"], "f": [{"k": "mat", "ans": [[22, -1], [-4, -3]]}], "wrongMat": [[[2, -4], [15, 0]], "You multiplied matching positions. Matrix multiplication is row times column: multiply pairs and add."]}, {"id": "E3", "label": "E3", "sec": "E", "marks": 3, "steps": [["Sales S = [[20,15;25,10]]   Prices = [[6;8]]", "B1", "Both matrices set up correctly"], ["Week 1: 20 × 6 + 15 × 8 = 240;   week 2: 25 × 6 + 10 × 8 = 230", "M1", "Row times column"], ["Takings: $240 on week 1 and $230 on week 2.", "A1", "Both correct, with $ signs"]], "answer": "[[240;230]]: $240 and $230", "review": ["unit-07.html#t7-3", "Unit 7.3"], "f": [{"k": "num", "pre": "Week 1: $", "suf": "", "ans": 240, "tol": 0.0, "m": null}, {"k": "num", "pre": "Week 2: $", "suf": "", "ans": 230, "tol": 0.0, "m": null}]}, {"id": "F1", "label": "F1", "sec": "F", "marks": 2, "steps": [["The minus sign changes every sign in the second bracket: 3x² + 5x − 2 − x² + 2x − 4", "M1", "All three signs changed"], ["Collect like terms: 2x² + 7x − 6", "A1", "Correct answer"]], "answer": "2x² + 7x − 6", "review": ["unit-07.html#t7-5", "Unit 7.5"], "f": [{"k": "expr", "ans": "2x^2+7x-6", "var": "x", "form": "expanded", "pre": "", "nb": 0, "m": null}]}, {"id": "F2", "label": "F2", "sec": "F", "marks": 2, "steps": [["Every term in the first bracket multiplies every term in the second: 2x² − x + 12x − 6", "M1", "Four products, at least three correct"], ["= 2x² + 11x − 6", "A1", "Like terms collected"]], "answer": "2x² + 11x − 6", "review": ["unit-07.html#t7-6", "Unit 7.6"], "f": [{"k": "expr", "ans": "2x^2+11x-6", "var": "x", "form": "expanded", "pre": "", "nb": 0, "m": null}]}, {"id": "F3a", "label": "F3(a)", "sec": "F", "marks": 2, "steps": [["Both terms share 2 and x, so take out 2x", "M1", "Common factor identified (partial factor such as x(…) earns M1)"], ["= 2x(5x + 2)", "A1", "Fully factorised"]], "answer": "2x(5x + 2)", "review": ["unit-07.html#t7-7", "Unit 7.7"], "f": [{"k": "expr", "ans": "2x(5x+2)", "var": "x", "form": "product", "pre": "", "nb": 1, "m": null}]}, {"id": "F3b", "label": "F3(b)", "sec": "F", "marks": 2, "steps": [["Two numbers that multiply to −14 and add to −5: −7 and 2", "M1", "Correct pair"], ["= (x − 7)(x + 2)", "A1", "Correct factors"]], "answer": "(x − 7)(x + 2)", "review": ["unit-07.html#t7-8", "Unit 7.8"], "f": [{"k": "expr", "ans": "(x-7)(x+2)", "var": "x", "form": "product", "pre": "", "nb": 2, "m": null}]}, {"id": "F3c", "label": "F3(c)", "sec": "F", "marks": 2, "steps": [["Common factor first: 5(x² − 4)", "M1", "Common factor taken out"], ["x² − 4 is a difference of two squares: 5(x + 2)(x − 2)", "A1", "Fully factorised"], ["", "", "Common mistake: stopping at 5(x² − 4) loses marks."]], "answer": "5(x + 2)(x − 2)", "review": ["unit-07.html#t7-9", "Unit 7.9"], "f": [{"k": "expr", "ans": "5(x+2)(x-2)", "var": "x", "form": "product", "pre": "", "nb": 2, "m": null}]}, {"id": "F3d", "label": "F3(d)", "sec": "F", "marks": 2, "steps": [["Split the middle term and group: 2x² + 2x + 3x + 3", "M1", "Middle term split, or correct trial brackets"], ["= (x + 1)(2x + 3)", "A1", "Correct factors"]], "answer": "(x + 1)(2x + 3)", "review": ["unit-07.html#t7-8", "Unit 7.8"], "f": [{"k": "expr", "ans": "(2x+3)(x+1)", "var": "x", "form": "product", "pre": "", "nb": 2, "m": null}]}, {"id": "G1", "label": "G1", "sec": "G", "marks": 3, "steps": [["(x − 2)(x + 5) = 0", "M1", "Correct factorisation"], ["x − 2 = 0 gives x = 2", "A1", "First root"], ["x + 5 = 0 gives x = −5", "A1", "Second root"], ["", "", "Common mistake: roots with the wrong signs (read straight from the brackets) lose marks."]], "answer": "x = 2 or x = −5", "review": ["unit-08.html#t8-1", "Unit 8.1"], "f": [{"k": "num", "pre": "x =", "suf": "", "ans": 2, "tol": 0.0, "m": null}, {"k": "num", "pre": "or  x =", "suf": "", "ans": -5, "tol": 0.0, "m": null}], "unordered": true, "wrongSet": [[-2, 5], "Your roots have the wrong signs. (x + 5) = 0 gives x = −5."]}, {"id": "G2", "label": "G2", "sec": "G", "marks": 4, "steps": [["a = 1, b = −6, c = 3", "B1", "a, b and c with their signs"], ["b² − 4ac = (−6)² − 4(1)(3) = 36 − 12 = 24", "M1", "Discriminant correct"], ["x = [6 ± √24] ÷ 2 = (6 ± 4.8990) ÷ 2", "M1", "Correct substitution, whole top divided by 2a"], ["x = 5.45 or x = 0.55", "A1", "Both answers to 2 d.p."], ["", "", "Common mistake: using −b = -6 (sign not changed) gives negative answers."]], "answer": "x = 5.45 or x = 0.55", "review": ["unit-08.html#t8-4", "Unit 8.4"], "f": [{"k": "num", "pre": "x =", "suf": "", "ans": 5.45, "tol": 0.006, "m": null}, {"k": "num", "pre": "or  x =", "suf": "", "ans": 0.55, "tol": 0.006, "m": null}], "unordered": true}, {"id": "G3a", "label": "G3(a)", "sec": "G", "marks": 1, "steps": [["Length = x + 3.  Area = x(x + 3) = 70, so x² + 3x = 70, giving x² + 3x − 70 = 0", "B1", "Area equation formed and rearranged — must be shown, not just restated"]], "answer": "Shown", "review": ["unit-08.html#t8-1", "Unit 8.1"], "self": true}, {"id": "G3b", "label": "G3(b)", "sec": "G", "marks": 4, "steps": [["(x + 10)(x − 7) = 0   (or the quadratic formula)", "M1", "Correct factors or correct formula substitution"], ["x = 7 or x = -10", "A1", "Both roots"], ["Reject x = -10: a width cannot be negative.", "B1", "Rejection with a reason (LO10)"], ["The pen is 7 m wide and 10 m long.  Check: 7 × 10 = 70 ✓", "A1", "Both dimensions with units"]], "answer": "7 m by 10 m", "review": ["unit-08.html#t8-1", "Unit 8.1"], "f": [{"k": "num", "pre": "Width", "suf": "m", "ans": 7, "tol": 0.0, "m": 2}, {"k": "num", "pre": "Length", "suf": "m", "ans": 10, "tol": 0.0, "m": 2}]}, {"id": "H1", "label": "H1", "sec": "H", "marks": 3, "steps": [["V = πr²h = π × 1² × 1.8", "M1", "Correct formula and substitution"], ["= π × 1 × 1.8 = 5.6549 m³", "A1", "Volume in m³"], ["1 m³ = 1,000 litres, so capacity = 5.6549 × 1,000 = 5,655 litres", "B1", "Converted to litres"], ["", "", "Common mistake: using the diameter instead of the radius gives four times the answer."]], "answer": "5,655 litres", "review": ["unit-08.html#t8-7", "Unit 8.7"], "f": [{"k": "num", "pre": "", "suf": "litres", "ans": 5655, "tol": 1.5, "m": null}], "wrong": {"22619": "You used the diameter as the radius. r = 1 m.", "5.65": "That is the volume in m³. Multiply by 1,000 to get litres.", "5.655": "That is the volume in m³. Multiply by 1,000 to get litres."}}, {"id": "H2a", "label": "H2(a)", "sec": "H", "marks": 2, "steps": [["Area = 200 × 140 = 28,000 m²", "M1", "Area in m²"], ["1 ha = 10,000 m², so 28,000 ÷ 10,000 = 2.8 ha", "A1", "Correct hectares"]], "answer": "2.8 ha", "review": ["unit-08.html#t8-6", "Unit 8.6–8.7"], "f": [{"k": "num", "pre": "", "suf": "ha", "ans": 2.8, "tol": 0.0, "m": null}], "wrong": {"28000": "That is the area in m². Divide by 10,000 to get hectares."}}, {"id": "H2b", "label": "H2(b)", "sec": "H", "marks": 1, "steps": [["150 × 2.8 = 420 kg", "B1", "Follow through from (a)"]], "answer": "420 kg", "review": ["unit-08.html#t8-6", "Unit 8.6–8.7"], "f": [{"k": "num", "pre": "", "suf": "kg", "ans": 420, "tol": 0.0, "m": null}]}, {"id": "H3", "label": "H3", "sec": "H", "marks": 3, "steps": [["Opposite and adjacent, so use tan:  tan 55° = h ÷ 20", "B1", "tan chosen"], ["h = 20 × tan 55° = 20 × 1.42815", "M1", "Rearranged correctly"], ["h = 28.56 m", "A1", "Correct height with units. Accept 28.55 to 28.57 m from a rounded tan value."], ["", "", "Common mistake: a very different answer usually means the calculator is in radian mode."]], "answer": "28.56 m", "review": ["unit-08.html#t8-9", "Unit 8.9"], "f": [{"k": "num", "pre": "", "suf": "m", "ans": 28.56, "tol": 0.011, "m": null}], "wrong": {"-9.07": "Your calculator is in radian mode. Switch it to degrees."}}, {"id": "H4a", "label": "H4(a)", "sec": "H", "marks": 2, "steps": [["The ladder is the hypotenuse.  h² = 6² − 1.8² = 36 − 3.24 = 32.76", "M1", "Pythagoras with subtraction"], ["h = √32.76 = 5.72 m", "A1", "Correct height"], ["", "", "Common mistake: adding the squares gives a height longer than the ladder — impossible — a useful check."]], "answer": "5.72 m", "review": ["unit-08.html#t8-8", "Unit 8.8–8.9"], "f": [{"k": "num", "pre": "", "suf": "m", "ans": 5.72, "tol": 0.011, "m": null}], "wrong": {"6.26": "You added the squares. The ladder is the hypotenuse, so subtract: 6² − 1.8²."}}, {"id": "H4b", "label": "H4(b)", "sec": "H", "marks": 2, "steps": [["Adjacent 1.8 and hypotenuse 6, so use cos:  cos θ = 1.8 ÷ 6 = 0.3000", "M1", "Correct ratio"], ["θ = cos⁻¹(0.3000) = 72.5°", "A1", "Correct angle. Accept ±0.1° if the rounded height from (a) was used with sin⁻¹ or tan⁻¹."]], "answer": "72.5°", "review": ["unit-08.html#t8-8", "Unit 8.8–8.9"], "f": [{"k": "num", "pre": "", "suf": "°", "ans": 72.5, "tol": 0.11, "m": null}], "wrong": {"17.5": "That is the angle with the wall. The question asks for the angle with the ground: use cos θ = 1.8 ÷ 6."}}, {"id": "H5a", "label": "H5(a)", "sec": "H", "marks": 2, "steps": [["0.3t² differentiates to 0.6t   (bring the 2 down, reduce the power by 1)", "M1", "One term correct"], ["2t differentiates to 2, so dh/dt = 0.6t + 2", "A1", "Both terms correct"]], "answer": "dh/dt = 0.6t + 2", "review": ["unit-08.html#t8-11", "Unit 8.11"], "f": [{"k": "expr", "ans": "0.6t+2", "var": "t", "form": "expanded", "pre": "dh/dt =", "nb": 0, "m": null}]}, {"id": "H5b", "label": "H5(b)", "sec": "H", "marks": 1, "steps": [["0.6(5) + 2 = 5 cm per week", "B1", "Correct value with units (LO10)"], ["", "", "Common mistake: putting t = 5 into h instead gives the height (17.5 cm), not the rate."]], "answer": "5 cm per week", "review": ["unit-08.html#t8-11", "Unit 8.11"], "f": [{"k": "num", "pre": "", "suf": "cm per week", "ans": 5, "tol": 0.0, "m": null}], "wrong": {"17.5": "That is the height at week 5. The rate comes from dh/dt, not from h."}}, {"id": "H6", "label": "H6", "sec": "H", "marks": 4, "steps": [["Integrate each term: 4t → 4t²/2 = 2t²   and   1 → 1t", "M1", "Power rule for integration used"], ["∫(4t + 1) dt = 2t² + 1t", "A1", "Correct integral"], ["Put in the limits: [2(3)² + 1(3)] − [0] = 18 + 3", "M1", "Top limit minus bottom limit"], ["= 21 litres", "A1", "Correct total with units"]], "answer": "21 litres", "review": ["unit-08.html#t8-12", "Unit 8.12"], "f": [{"k": "num", "pre": "", "suf": "litres", "ans": 21, "tol": 0.0, "m": null}]}];
+const SECS = [{"id": "A", "title": "Number Systems, Exponents and Radicals", "marks": 10}, {"id": "B", "title": "Equations, Inequalities and Absolute Value", "marks": 12}, {"id": "C", "title": "Coordinate Geometry and Graphing", "marks": 10}, {"id": "D", "title": "Sequences and Series", "marks": 14}, {"id": "E", "title": "Matrices", "marks": 10}, {"id": "F", "title": "Polynomials and Factorisation", "marks": 12}, {"id": "G", "title": "Quadratic Equations", "marks": 12}, {"id": "H", "title": "Geometry, Trigonometry and Introductory Calculus", "marks": 20}];
+const KEY = 'mat1001-practice-v1';
+
+/* ---------- storage (may be blocked inside an embedded frame: the page still works) */
+const store = {
+  get() { try { return JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { return {}; } },
+  set(v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {} }
+};
+
+/* ---------- reading numbers */
+function clean(s) {
+  return String(s || '').trim().replace(/[−–—]/g, '-').replace(/(\d),(?=\d{3}\b)/g, '$1').replace(/[$\s°%]/g, '').replace(/^[a-z]+=/i, '');
+}
+function num(s) {
+  const t = clean(s); if (!t) return null;
+  const m = t.match(/^(-?(?:\d+\.?\d*|\.\d+))(?:\/(\d+(?:\.\d+)?))?([a-zA-Z²³]*)$/);
+  if (!m) return NaN;
+  return m[2] ? parseFloat(m[1]) / parseFloat(m[2]) : parseFloat(m[1]);
+}
+const near = (a, b, tol) => Math.abs(a - b) <= Math.max(tol || 0, 1e-9 + 1e-9 * Math.abs(b));
+
+/* ---------- a small algebra reader: parses an expression and evaluates it */
+const SUPS = { '⁰': '0', '¹': '1', '²': '2', '³': '3', '⁴': '4', '⁵': '5', '⁶': '6', '⁷': '7', '⁸': '8', '⁹': '9' };
+function normExpr(s) {
+  s = String(s || '');
+  if (s.includes('=')) s = s.slice(s.lastIndexOf('=') + 1);
+  s = s.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]+/g, m => '^' + [...m].map(c => SUPS[c]).join(''));
+  return s.replace(/[−–—]/g, '-').replace(/[×·]/g, '*').replace(/÷/g, '/').replace(/(\d),(?=\d{3}\b)/g, '$1').replace(/\s+/g, '').toLowerCase();
+}
+function parse(src) {
+  const toks = []; let i = 0;
+  while (i < src.length) {
+    const c = src[i];
+    if (/[0-9.]/.test(c)) { let j = i; while (j < src.length && /[0-9.]/.test(src[j])) j++; toks.push({ t: 'n', v: parseFloat(src.slice(i, j)) }); i = j; continue; }
+    if (src.startsWith('sqrt', i)) { toks.push({ t: 'f' }); i += 4; continue; }
+    if (c === '√') { toks.push({ t: 'f' }); i++; continue; }
+    if (/[a-z]/.test(c)) { toks.push({ t: 'v', v: c }); i++; continue; }
+    if ('+-*/^()'.includes(c)) { toks.push({ t: c }); i++; continue; }
+    throw new Error('bad');
+  }
+  // implicit multiplication
+  const out = [];
+  toks.forEach((k, idx) => {
+    const p = out[out.length - 1];
+    if (p && (p.t === 'n' || p.t === 'v' || p.t === ')') && (k.t === 'n' || k.t === 'v' || k.t === '(' || k.t === 'f')) out.push({ t: '*' });
+    out.push(k);
+  });
+  let pos = 0;
+  const peek = () => out[pos], eat = t => { if (!out[pos] || out[pos].t !== t) throw new Error('bad'); return out[pos++]; };
+  function expr() { let n = term(); while (peek() && (peek().t === '+' || peek().t === '-')) { const op = out[pos++].t; n = { op, a: n, b: term() }; } return n; }
+  function term() { let n = unary(); while (peek() && (peek().t === '*' || peek().t === '/')) { const op = out[pos++].t; n = { op, a: n, b: unary() }; } return n; }
+  function unary() { if (peek() && peek().t === '-') { pos++; return { op: 'neg', a: unary() }; } if (peek() && peek().t === '+') { pos++; return unary(); } return power(); }
+  function power() { const b = atom(); if (peek() && peek().t === '^') { pos++; return { op: '^', a: b, b: unary() }; } return b; }
+  function atom() {
+    const k = peek(); if (!k) throw new Error('bad');
+    if (k.t === 'n') { pos++; return { op: 'n', v: k.v }; }
+    if (k.t === 'v') { pos++; return { op: 'v', v: k.v }; }
+    if (k.t === 'f') { pos++; return { op: 'sqrt', a: atom() }; }
+    if (k.t === '(') { pos++; const e = expr(); eat(')'); return { op: '()', a: e }; }
+    throw new Error('bad');
+  }
+  const tree = expr(); if (pos !== out.length) throw new Error('bad'); return tree;
+}
+function ev(n, env) {
+  switch (n.op) {
+    case 'n': return n.v; case 'v': if (!(n.v in env)) throw new Error('var'); return env[n.v];
+    case '()': return ev(n.a, env); case 'neg': return -ev(n.a, env); case 'sqrt': return Math.sqrt(ev(n.a, env));
+    case '+': return ev(n.a, env) + ev(n.b, env); case '-': return ev(n.a, env) - ev(n.b, env);
+    case '*': return ev(n.a, env) * ev(n.b, env); case '/': return ev(n.a, env) / ev(n.b, env);
+    case '^': return Math.pow(ev(n.a, env), ev(n.b, env));
+  }
+}
+const PTS = [-2.7, -1.3, 0.6, 1.9, 3.4];
+function same(t1, t2, v) { return PTS.every(x => { const a = ev(t1, { [v]: x }), b = ev(t2, { [v]: x }); return isFinite(a) && Math.abs(a - b) <= 1e-6 * Math.max(1, Math.abs(b)); }); }
+function factors(n) { // top-level product factors
+  if (n.op === '*') return [...factors(n.a), ...factors(n.b)];
+  if (n.op === '()' && n.a.op !== '+' && n.a.op !== '-') return factors(n.a);
+  return [n];
+}
+const gcd = (a, b) => { a = Math.abs(Math.round(a)); b = Math.abs(Math.round(b)); while (b) [a, b] = [b, a % b]; return a; };
+function checkExpr(input, f) {
+  const s = normExpr(input); if (!s) return { state: 'blank' };
+  let t; try { t = parse(s); } catch (e) { return { state: 'wrong', msg: 'The page could not read that expression. Check the brackets, and type powers with ^.' }; }
+  let ok; try { ok = same(t, parse(normExpr(f.ans)), f.var); } catch (e) { return { state: 'wrong', msg: `Use the letter ${f.var} in your answer.` }; }
+  if (!ok) return { state: 'wrong' };
+  if (f.form === 'simple' && (/[*/]/.test(s) || (s.match(new RegExp(f.var, 'g')) || []).length > 1)) return { state: 'wrong', msg: 'That is equal, but it is not simplified yet. Write it as a single power.' };
+  if (f.form === 'expanded' && s.includes('(')) return { state: 'wrong', msg: 'That is equal, but the question wants the brackets multiplied out and like terms collected.' };
+  if (f.form === 'product') {
+    const brs = factors(t).filter(k => k.op === '()' || k.op === '+' || k.op === '-');
+    if (!brs.length) return { state: 'wrong', msg: 'That is equal, but it is not factorised. Write it as a product with brackets.' };
+    const lin = brs.filter(k => { const f0 = ev(k, { [f.var]: 0 }), f1 = ev(k, { [f.var]: 1 }), f2 = ev(k, { [f.var]: 2 }); return Math.abs(f2 - 2 * f1 + f0) < 1e-9; });
+    const common = lin.some(k => { const c = ev(k, { [f.var]: 0 }), a = ev(k, { [f.var]: 1 }) - c; return gcd(a, c) > 1; });
+    if (brs.length < f.nb || lin.length < brs.length || common) return { state: 'wrong', msg: 'That is equal, but it is not fully factorised. Look for a common factor, or a bracket that factorises again.' };
+  }
+  return { state: 'right' };
+}
+
+/* ---------- marking one item */
+function el(id) { return document.getElementById(id); }
+function fieldVal(it, k) {
+  const f = it.f[k];
+  if (f.k === 'mat') return f.ans.map((r, i) => r.map((_, j) => el(`${it.id}_${k}_${i}_${j}`).value));
+  return el(`${it.id}_${k}`).value;
+}
+function fieldEls(it, k) {
+  const f = it.f[k];
+  if (f.k === 'mat') return f.ans.flatMap((r, i) => r.map((_, j) => el(`${it.id}_${k}_${i}_${j}`)));
+  return [el(`${it.id}_${k}`)];
+}
+function judgeField(it, k) {
+  const f = it.f[k], v = fieldVal(it, k);
+  if (f.k === 'num') { const x = num(v); if (x === null) return { state: 'blank' }; if (isNaN(x)) return { state: 'wrong', msg: 'Type a number only, for example 12.5 or −3.' }; return { state: near(x, f.ans, f.tol) ? 'right' : 'wrong', x }; }
+  if (f.k === 'sel' || f.k === 'sign') { if (!v) return { state: 'blank' }; return { state: v === f.ans ? 'right' : 'wrong' }; }
+  if (f.k === 'expr') return checkExpr(v, f);
+  if (f.k === 'mat') {
+    const vals = v.map(r => r.map(num)); if (vals.flat().every(x => x === null)) return { state: 'blank' };
+    const ok = f.ans.every((r, i) => r.every((a, j) => vals[i][j] !== null && near(vals[i][j], a, 0)));
+    let msg; if (!ok && it.wrongMat && it.wrongMat[0].every((r, i) => r.every((a, j) => vals[i][j] !== null && near(vals[i][j], a, 0)))) msg = it.wrongMat[1];
+    return { state: ok ? 'right' : 'wrong', msg };
+  }
+}
+function judge(it) {
+  if (it.self) return { self: true };
+  let res = it.f.map((_, k) => judgeField(it, k));
+  if (it.unordered) {
+    const xs = res.map(r => r.x), ans = it.f.map(f => f.ans);
+    if (xs.every(x => typeof x === 'number' && !isNaN(x))) {
+      const used = new Set();
+      res = xs.map((x, k) => { const j = ans.findIndex((a, jj) => !used.has(jj) && near(x, a, it.f[jj].tol)); if (j >= 0) { used.add(j); return { state: 'right', x }; } return { state: 'wrong', x }; });
+    }
+  }
+  const blank = res.every(r => r.state === 'blank');
+  let earned;
+  if (it.f.some(f => f.m !== null && f.m !== undefined)) {
+    earned = 0; let grp = true;
+    it.f.forEach((f, k) => { grp = grp && res[k].state === 'right'; if (f.m) { if (grp) earned += f.m; grp = true; } });
+    earned = Math.min(earned, it.marks);
+  } else earned = res.every(r => r.state === 'right') ? it.marks : 0;
+  // targeted message for a known wrong answer
+  let msg = res.map(r => r.msg).find(Boolean);
+  if (!msg && it.wrong) { const x = res[0] && res[0].x; if (typeof x === 'number') for (const [w, m] of Object.entries(it.wrong)) if (Math.abs(x - parseFloat(w)) <= 0.02 * Math.max(1, Math.abs(w))) msg = m; }
+  if (!msg && it.wrongSet) { const xs = res.map(r => r.x).filter(x => typeof x === 'number').sort((a, b) => a - b), w = [...it.wrongSet[0]].sort((a, b) => a - b); if (xs.length === w.length && xs.every((x, i) => near(x, w[i], 0))) msg = it.wrongSet[1]; }
+  return { res, blank, earned, msg };
+}
+
+/* ---------- feedback */
+const html = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+function mx(body) {
+  const rows = body.split(';').map(r => r.split(',').map(c => c.trim()));
+  return `<span class="mx"><span class="mxg" style="grid-template-columns:repeat(${rows[0].length},auto)">${rows.flat().map(c => `<span>${html(c)}</span>`).join('')}</span></span>`;
+}
+const fmt = s => html(s).replace(/\[\[([^\]]+)\]\]/g, (_, m) => mx(m));
+function solution(it, hideTips) {
+  const steps = it.steps.filter(s => s[0]).map(s => `<li>${fmt(s[0])}${s[1] ? `<span class="mk">${s[1]}</span>` : ''}</li>`).join('');
+  const tips = hideTips ? '' : it.steps.filter(s => !s[0] && s[2]).map(s => `<p class="tip">${fmt(s[2])}</p>`).join('');
+  const rev = it.review ? `<p class="rev">Revise: <a href="${it.review[0]}" target="_top">${it.review[1]} on the course site</a></p>` : '';
+  return `<p><strong>Answer:</strong> ${fmt(it.answer)}</p><p>Working, step by step:</p><ol>${steps}</ol>${tips}${rev}`;
+}
+function show(it, j) {
+  const box = el('fb-' + it.id), wrap = el('it-' + it.id); box.hidden = false;
+  wrap.classList.remove('ok', 'bad');
+  if (j.self) {
+    el(it.id + '_self').hidden = false;
+    box.className = 'fb self';
+    box.innerHTML = `<h4>Mark this one yourself</h4>${it.graph || ''}${solution(it)}`;
+    return;
+  }
+  it.f.forEach((_, k) => fieldEls(it, k).forEach(e => e.classList.toggle('wrongf', j.res[k].state !== 'right')));
+  if (j.earned === it.marks) { wrap.classList.add('ok'); box.className = 'fb ok'; box.innerHTML = `<h4>✓ Correct — ${it.marks} of ${it.marks}</h4>`; return; }
+  wrap.classList.add('bad'); box.className = 'fb bad';
+  const head = j.blank ? 'Not answered' : (j.earned ? `Partly right — ${j.earned} of ${it.marks}` : `Not right yet — 0 of ${it.marks}`);
+  box.innerHTML = `<h4>${head}</h4>${j.msg ? `<p class="why">${fmt(j.msg)}</p>` : ''}${solution(it, !!j.msg)}`;
+}
+function selfMarks(it) { const r = document.querySelector(`input[name="${it.id}_s"]:checked`); return r ? parseInt(r.value, 10) : 0; }
+
+function results() {
+  const per = {}; SECS.forEach(s => per[s.id] = { got: 0, of: s.marks, wrong: [] });
+  let total = 0, answered = 0;
+  ITEMS.forEach(it => {
+    const j = judge(it); show(it, j);
+    const g = j.self ? selfMarks(it) : j.earned; total += g; per[it.sec].got += g;
+    if (!j.self && !j.blank) answered++;
+    if (!j.self && g < it.marks) per[it.sec].wrong.push(it);
+  });
+  const rows = SECS.map(s => { const p = per[s.id], pc = Math.round(100 * p.got / p.of);
+    return `<tr><th scope="row"><a href="#sec-${s.id}">${s.id} — ${html(s.title)}</a></th><td class="n">${p.got} / ${p.of}</td><td><div class="meter${pc < 50 ? ' low' : ''}"><span style="width:${pc}%"></span></div></td></tr>`; }).join('');
+  const weak = SECS.filter(s => per[s.id].got / per[s.id].of < 0.5);
+  const firstWrong = ITEMS.filter(it => !it.self && per[it.sec].wrong.includes(it)).slice(0, 12);
+  const advice = total >= 70 ? 'You are ready. Go through the questions you lost marks on, and practise writing answers in full sentences with units.'
+    : total >= 50 ? 'A solid base. Work on the two weakest sections below, then try this paper again in a few days.'
+    : 'Start with the sections marked in red. Watch the video in each linked unit section, redo its worksheet questions, then try this paper again in a week.';
+  el('results').hidden = false; count();
+  el('results').innerHTML = `<div class="res"><h2>Your results</h2><p class="big">${total} / 100</p>
+    <p>${advice}</p>
+    <table><thead><tr><th>Section</th><th>Marks</th><th>&nbsp;</th></tr></thead><tbody>${rows}</tbody></table>
+    ${weak.length ? `<p><strong>Revise these sections first:</strong> ${weak.map(s => `<a href="#sec-${s.id}">${s.id} — ${html(s.title)}</a>`).join(', ')}.</p>` : ''}
+    ${firstWrong.length ? `<p><strong>Questions to look at again</strong> (the working is shown under each one):</p><ul class="next">${firstWrong.map(it => `<li><a href="#it-${it.id}">${it.label}</a>${it.review ? ` — revise <a href="${it.review[0]}" target="_top">${it.review[1]}</a>` : ''}</li>`).join('')}</ul>` : ''}
+    <p class="aside">Questions ${ITEMS.filter(i => i.self).map(i => i.label).join(' and ')} are marked by you: choose your mark under each one and press Check my answers again to include it.</p></div>`;
+  el('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* ---------- saving, counting, clock */
+const inputs = () => [...document.querySelectorAll('.xi input, .xi select')];
+function save() {
+  const v = {}; inputs().forEach(e => { if (e.type === 'radio') { if (e.checked) v[e.name] = e.value; } else if (e.value) v[e.id] = e.value; });
+  const st = store.get(); st.v = v; store.set(st); count();
+}
+function load() {
+  const st = store.get(), v = st.v || {};
+  inputs().forEach(e => { if (e.type === 'radio') e.checked = v[e.name] === e.value; else if (v[e.id] !== undefined) e.value = v[e.id]; });
+  if (!st.start) { st.start = Date.now(); store.set(st); }
+  count(); tick();
+}
+function count() { const n = ITEMS.filter(it => !it.self && !judge(it).blank).length; el('count').textContent = `${n} of ${ITEMS.filter(i => !i.self).length} answered`; }
+function tick() {
+  const st = store.get(); if (!st.start) return;
+  const m = Math.floor((Date.now() - st.start) / 60000), left = 120 - m;
+  el('clock').textContent = left > 0 ? `Time used: ${Math.floor(m / 60)} h ${m % 60} min of 2 h.` : 'Your 2 hours are up — check your answers when you are ready.';
+}
+setInterval(tick, 30000);
+document.addEventListener('input', e => { if (e.target.closest('.xi')) save(); });
+document.addEventListener('change', e => { if (e.target.closest('.xi')) save(); });
+el('check').addEventListener('click', results);
+el('reset').addEventListener('click', () => {
+  if (!confirm('Clear all your answers and start again?')) return;
+  inputs().forEach(e => { if (e.type === 'radio') e.checked = false; else e.value = ''; e.classList.remove('wrongf'); });
+  document.querySelectorAll('.fb').forEach(b => { b.hidden = true; b.innerHTML = ''; });
+  document.querySelectorAll('.xi').forEach(w => w.classList.remove('ok', 'bad'));
+  document.querySelectorAll('.selfmark').forEach(f => f.hidden = true);
+  el('results').hidden = true; store.set({ start: Date.now() }); count(); tick(); window.scrollTo(0, 0);
+});
+load();
+</script>
+</body>
+</html>
